@@ -1,18 +1,24 @@
 /* Your Flowmate Page List Style */
 .check-list {
-    list-style: none;
+	list-style: none;
+	padding-left: 12px;
 
 	li {
+		position: relative;
 		justify-content: space-between;
 		margin-bottom: 0;
-        padding: 12px 0;
+        padding: 12px 0 12px 36px;
 
 		&::before {
 			content: '';
-			display: inline-block;
+			display: block;
+			position: absolute;
 			width: 16px;
 			height: 12px;
-			margin-right: 12px;
+			margin-right: 0px;
+			margin-left: -28px;
+			padding-right: 0px;
+			margin-top: 10px;
 			background-image: inline-svg('<svg width="16" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M16 1.6L15.2 0C8.3 2 4.8 6.4 4.8 6.4L1.6 4 0 5.6 4.8 12C8.5 5.1 16 1.6 16 1.6z" fill="' + get-color(alert, success) + '" fill-rule="nonzero"/></svg>');
 			background-repeat: no-repeat;
 		}
