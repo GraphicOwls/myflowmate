@@ -1,7 +1,7 @@
 // Typography
 
-$font--provider:    'Google Fonts';
-$font--import:      'Graphik:700|Roboto:400,500,700';
+$font--provider:    'Custom';
+$font--import:      'Inter:900,700,400|Graphik:900,700,600,400|Roboto:400,500,700';
 /*$font--import:      'Frank+Ruhl+Libre:700|Roboto:400,500,700';*/
 
 // The font set
@@ -59,7 +59,7 @@ $font--size: (
 
 // Base elements: font weight
 $font--weight: (
-	heading:	700,
+	heading:	600,
 	base: 		400,
 	strong:		600,
 	bquote: 	700,
