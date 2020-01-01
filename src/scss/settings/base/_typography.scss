@@ -1,12 +1,13 @@
 // Typography
 
 $font--provider:    'Google Fonts';
-$font--import:      'Frank+Ruhl+Libre:700|Roboto:400,500,700';
+$font--import:      'Graphik:700|Roboto:400,500,700';
+/*$font--import:      'Frank+Ruhl+Libre:700|Roboto:400,500,700';*/
 
 // The font set
 $font--family: (
-	heading: 	'"SuisseIntl-Bold", serif',
-	base:		'"Roboto", sans-serif',
+	heading: 	'"Graphik", sans-serif',
+	base:		'"Graphik", sans-serif',
 	code: 		'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
 	pre: 		'"Courier 10 Pitch", Courier, monospace'
 );
@@ -60,7 +61,7 @@ $font--size: (
 $font--weight: (
 	heading:	700,
 	base: 		400,
-	strong:		700,
+	strong:		600,
 	bquote: 	700,
 	figcap: 	null,
 );
