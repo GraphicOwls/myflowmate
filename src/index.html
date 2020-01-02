@@ -16,7 +16,7 @@
 	<meta property="og:description" content="Get 1 on 1 support with a webflow expert. Want to learn Webflow faster? Need help with interactions? Not a problem, book a session for personalized help!" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://www.myflowmate.com" />
-	<meta property="og:image" content="/images/myflowmate-og.jpg" />
+	<meta property="og:image" content="https://myflowmate.com/images/myflowmate-og.jpg" />
 	<link rel='shortcut icon' type='image/x-icon' href='images/favicon.ico' />
 	<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
@@ -27,6 +27,29 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MX6LTFL"
 	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+
+	<!-- Load Facebook SDK for JavaScript -->
+	<div id="fb-root"></div>
+	<script>
+	  window.fbAsyncInit = function() {
+		FB.init({
+		  xfbml            : true,
+		  version          : 'v5.0'
+		});
+	  };
+
+	  (function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!-- Your customer chat code -->
+	<div class="fb-customerchat" attribution=setup_tool page_id="108064434049348" theme_color="#3f52ff" logged_in_greeting="Hey, there! Have any questions about booking?" logged_out_greeting="Hey, there! Have any questions about booking?"></div>
+	<!-- End customer chat code -->
+
     <div class="body-wrap">
 		<header class="site-header">
 			<div class="container">
