@@ -47,5 +47,8 @@
         "stylelint": "^9.4.0",
         "uglify-es": "^3.3.10"
     },
-    "homepage": "https://cruip.com/sketch"
+    "homepage": "https://cruip.com/sketch",
+    "dependencies": {
+        "cookie-notice": "^1.2.3"
+    }
 }
