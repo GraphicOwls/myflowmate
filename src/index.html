@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-MX6LTFL');</script>
-	<!-- End Google Tag Manager -->
+	<!-- Plausible Analytics -->
+	<script>
+		(function (w,d,s,o,f,js,fjs) {
+		w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+		js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+		js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+		}(window, document, 'script', 'plausible', 'https://plausible.io/js/p.js'));
+	
+		plausible('page')
+	</script>
+	<!-- End Plausible Analytics -->
 
 	<!-- Consent Manager -->
 	<script src="https://config.metomic.io/config.js?id=prj:5542b8d9-9cd5-426f-be6f-dfd35e0aa581" crossorigin charset="utf-8"></script>
