@@ -8,7 +8,6 @@
   })
 }())
 
-
-//Dynamic Copyright Year
-var date = new Date().getFullYear();
-document.getElementById("year").innerHTML = date;
+// Dynamic Copyright Year
+var date = new Date().getFullYear()
+document.getElementById('year').innerHTML = date
