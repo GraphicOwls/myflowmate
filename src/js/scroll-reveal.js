@@ -1,9 +1,10 @@
-;(function () {
+;
+(function () {
   'use strict'
   const revealEl = document.querySelectorAll('[class*=reveal-]')
   let viewportHeight = window.innerHeight
 
-  function throttle (delay, fn) {
+  function throttle(delay, fn) {
     var lastCall = 0
     return function () {
       var now = new Date().getTime()
@@ -15,11 +16,11 @@
     }
   }
 
-  function elementIsVisible (el, offset) {
+  function elementIsVisible(el, offset) {
     return (el.getBoundingClientRect().top <= viewportHeight - offset)
   }
 
-  function revealElements () {
+  function revealElements() {
     for (let i = 0; i < revealEl.length; i++) {
       let el = revealEl[i]
       let revealDelay = el.getAttribute('data-reveal-delay')
@@ -38,16 +39,16 @@
     revealDone()
   }
 
-  function revealScroll () {
+  function revealScroll() {
     throttle(30, revealElements())
   }
 
-  function revealResize () {
+  function revealResize() {
     viewportHeight = window.innerHeight
     throttle(30, revealElements())
   }
 
-  function revealDone () {
+  function revealDone() {
     if (revealEl.length > document.querySelectorAll('[class*=reveal-].is-revealed').length) return
     window.removeEventListener('load', revealElements)
     window.removeEventListener('scroll', revealScroll)
