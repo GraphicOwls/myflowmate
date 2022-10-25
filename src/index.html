@@ -614,8 +614,8 @@
 										<div class="pricing-item-cta mb-8">
 											<a
 												class="button button-primary button-block"
-												href="#"
-												onclick="Calendly.initPopupWidget({url: 'https:\/\/calendly.com/noahraskin/30min?hide_event_type_details=1&primary_color=3f52ff'});return false;"
+												href="javascript:void(0);"
+												onclick="openSavvy('myflowmate/half-hour-session')"
 												>Book 30 Min</a
 											>
 										</div>
@@ -668,8 +668,8 @@
 										<div class="pricing-item-cta mb-8">
 											<a
 												class="button button-primary button-block"
-												href="#"
-												onclick="Calendly.initPopupWidget({url: 'https:\/\/calendly.com/noahraskin/60min?hide_event_type_details=1&primary_color=3f52ff'});return false;"
+												href="javascript:void(0);"
+												onclick="openSavvy('myflowmate/hour-session')"
 												>Book 60 Min</a
 											>
 										</div>
@@ -722,9 +722,10 @@
 										<div class="pricing-item-cta mb-8">
 											<a
 												class="button button-primary button-block"
-												href="#"
-												onclick="Calendly.initPopupWidget({url: 'https:\/\/calendly.com/noahraskin/120min?hide_event_type_details=1&primary_color=3f52ff'});return false;"
-												>Book 2 Hours</a
+												href="javascript:void(0);"
+												aria-disabled="true"
+												disabled
+												>Unavailable</a
 											>
 										</div>
 									</div>
@@ -872,9 +873,9 @@
 							<div class="brand">
 								<a href="index.html">
 									<img
-										src="images/mfm-icon.svg"
-										alt="Sketch"
-										width="40"
+										src="images/mfm-logo.svg"
+										alt="MyFlowMate"
+										width="180"
 										height="32"
 									/>
 								</a>
@@ -972,6 +973,28 @@
 			src="https://assets.calendly.com/assets/external/widget.js"
 			type="text/javascript"
 		></script>
+
+		<!-- SavvyCal -->
+		<script>
+			window.SavvyCal =
+				window.SavvyCal ||
+				function () {
+					(SavvyCal.q = SavvyCal.q || []).push(arguments);
+				};
+		</script>
+		<script async src="https://embed.savvycal.com/v1/embed.js"></script>
+		<script>
+			SavvyCal("init");
+
+			function openSavvy(link) {
+				SavvyCal("open", {
+					link: link,
+					displayName: "Noah Raskin",
+					email: "noahgraskin@gmail.com",
+					theme: "dark",
+				});
+			}
+		</script>
 
 		<!-- Fathom - beautiful, simple website analytics -->
 		<script src="https://cdn.usefathom.com/3.js" site="CGHJVNUH"></script>
