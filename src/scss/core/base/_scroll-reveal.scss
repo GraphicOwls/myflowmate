@@ -1,4 +1,7 @@
-@include media( '>medium' ) {
+@use '../../mixins' as mx;
+@use '../../variables' as *;
+
+@include mx.media('>medium') {
 
 	.has-animations {
 

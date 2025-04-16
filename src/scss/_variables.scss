@@ -90,3 +90,11 @@ $font-weight: (
 	bquote: 700,
 	figcap: null
 );
+
+// Breakpoints
+$breakpoints: (
+	small: 480px,
+	medium: 768px,
+	large: 992px,
+	xlarge: 1200px
+);

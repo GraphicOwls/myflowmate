@@ -48,9 +48,21 @@
 }
 
 // Media queries mixin (mobile-first)
-@mixin media($breakpoint) {
-  @media (min-width: #{$breakpoint}px) {
-    @content;
+@mixin media($expression) {
+  @if (str-index($expression, '>')) {
+    $breakpoint: str-slice($expression, 2);
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else if (str-index($expression, '<')) {
+    $breakpoint: str-slice($expression, 2);
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $expression) {
+      @content;
+    }
   }
 }
 

@@ -1,47 +1,47 @@
-@use 'variables';
-@use 'functions';
-@use 'colors';
-@use 'mixins';
+@import "variables";
+@import "functions";
+@import "colors";
+@import "mixins";
 
 // Import normalize
-@use 'core/normalize';
+@use "core/normalize";
 
 // Import base styles
-@use 'core/base/fonts';
-@use 'core/base/scroll-reveal';
-@use 'core/base/base';
-@use 'core/base/typography';
-@use 'core/base/helpers';
+@use "core/base/fonts";
+@use "core/base/scroll-reveal";
+@use "core/base/base";
+@use "core/base/typography";
+@use "core/base/helpers";
 
 // Import elements
-@use 'core/elements/containers';
-@use 'core/elements/buttons';
-@use 'core/elements/forms';
-@use 'core/elements/hamburger';
-@use 'core/elements/accordion';
-@use 'core/elements/modal';
-@use 'core/elements/carousel';
+@use "core/elements/containers";
+@use "core/elements/buttons";
+@use "core/elements/forms";
+@use "core/elements/hamburger";
+@use "core/elements/accordion";
+@use "core/elements/modal";
+@use "core/elements/carousel";
 
 // Import patterns
-@use 'core/patterns/split';
-@use 'core/patterns/tiles';
+@use "core/patterns/split";
+@use "core/patterns/tiles";
 
 // Import layout
-@use 'core/layout/header';
-@use 'core/layout/main';
-@use 'core/layout/footer';
+@use "core/layout/header";
+@use "core/layout/main";
+@use "core/layout/footer";
 
 // Import sections
-@use 'core/sections/section';
-@use 'core/sections/hero';
-@use 'core/sections/features-split';
-@use 'core/sections/features-tiles';
-@use 'core/sections/pricing';
-@use 'core/sections/testimonial';
-@use 'core/sections/team';
-@use 'core/sections/cta';
-@use 'core/sections/clients';
-@use 'core/sections/signin';
+@use "core/sections/section";
+@use "core/sections/hero";
+@use "core/sections/features-split";
+@use "core/sections/features-tiles";
+@use "core/sections/pricing";
+@use "core/sections/testimonial";
+@use "core/sections/team";
+@use "core/sections/cta";
+@use "core/sections/clients";
+@use "core/sections/signin";
 
 // Import theme
-@use 'theme/theme';
+@use "theme/theme";
