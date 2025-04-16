@@ -1,100 +1,102 @@
-@use 'variables' as *;
-@use 'functions' as fn;
+@forward "variables";
+@forward "functions";
+@use "variables" as *;
+@use "functions" as fn;
 
 // Font family mixin
 @mixin font-family($elem) {
-  font-family: fn.get-font-family($elem);
+	font-family: fn.get-font-family($elem);
 }
 
 // Font size mixin
 @mixin font-size($elem) {
-  font-size: fn.get-font-size($elem);
-  line-height: fn.get-line-height($elem);
-  letter-spacing: fn.get-kerning($elem);
+	font-size: fn.get-font-size($elem);
+	line-height: fn.get-line-height($elem);
+	letter-spacing: fn.get-kerning($elem);
 }
 
 // Font weight mixin
 @mixin font-weight($elem) {
-  font-weight: fn.get-font-weight($elem);
+	font-weight: fn.get-font-weight($elem);
 }
 
 // Divider mixin
 @mixin divider($style: true, $type: false) {
-  @if $style {
-    display: block;
-    height: 1px;
-    background: color-border($type + divider);
-  } @else {
-    display: none;
-  }
+	@if $style {
+		display: block;
+		height: 1px;
+		background: color-border($type + divider);
+	} @else {
+		display: none;
+	}
 }
 
 // Image hover mixin
 @mixin image-hover {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: color(bg-color);
-    opacity: 0;
-    transition: opacity 0.15s ease;
-  }
-  &:hover {
-    &::before {
-      opacity: 0.8;
-    }
-  }
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: color(bg-color);
+		opacity: 0;
+		transition: opacity 0.15s ease;
+	}
+	&:hover {
+		&::before {
+			opacity: 0.8;
+		}
+	}
 }
 
 // Media queries mixin (mobile-first)
 @mixin media($expression) {
-  @if (str-index($expression, '>')) {
-    $breakpoint: str-slice($expression, 2);
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  } @else if (str-index($expression, '<')) {
-    $breakpoint: str-slice($expression, 2);
-    @media (max-width: map-get($breakpoints, $breakpoint)) {
-      @content;
-    }
-  } @else {
-    @media (min-width: $expression) {
-      @content;
-    }
-  }
+	@if (str-index($expression, ">")) {
+		$breakpoint: str-slice($expression, 2);
+		@media (min-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	} @else if (str-index($expression, "<")) {
+		$breakpoint: str-slice($expression, 2);
+		@media (max-width: map-get($breakpoints, $breakpoint)) {
+			@content;
+		}
+	} @else {
+		@media (min-width: $expression) {
+			@content;
+		}
+	}
 }
 
 // Container mixin
 @mixin container {
-  max-width: var(--container-width);
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 var(--container-padding);
+	max-width: var(--container-width);
+	width: 100%;
+	margin: 0 auto;
+	padding: 0 var(--container-padding);
 }
 
 // Flexbox mixins
 @mixin flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @mixin flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 // Button reset mixin
 @mixin button-reset {
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-  outline: none;
-  &:focus {
-    outline: none;
-  }
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+	outline: none;
+	&:focus {
+		outline: none;
+	}
 }

@@ -1,7 +1,7 @@
-@import "variables";
-@import "functions";
-@import "colors";
-@import "mixins";
+@use "variables";
+@use "functions";
+@use "colors";
+@use "mixins";
 
 // Import normalize
 @use "core/normalize";
