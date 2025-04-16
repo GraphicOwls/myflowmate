@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "scripts": {
     "clean": "rimraf public/{css/*,js/*,images/*}",
-    "lint-scss": "stylelint src/scss/*.scss --syntax scss || true",
+    "lint-scss": "stylelint \"src/scss/**/*.scss\" || true",
     "scss": "sass src/scss:public/css --style compressed",
     "autoprefixer": "postcss public/css/*.css --use autoprefixer --replace",
     "lint": "eslint src/js || true",
