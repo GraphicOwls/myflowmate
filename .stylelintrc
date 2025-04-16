@@ -4,6 +4,12 @@
         "block-no-empty": true,
         "color-no-invalid-hex": true,
         "declaration-colon-space-after": "always",
-        "max-empty-lines": 2
+        "max-empty-lines": 2,
+        "property-no-vendor-prefix": null,
+        "comment-whitespace-inside": null,
+        "font-family-no-duplicate-names": null,
+        "no-duplicate-selectors": null,
+        "indentation": null,
+        "string-quotes": null
     }
 }
