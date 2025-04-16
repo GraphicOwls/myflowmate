@@ -1,9 +1,19 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../colors" as c;
+
+// Define local defaults for carousel variables using px units
+$carousel-bullet-width: 8px !default;
+$carousel-bullet-height: 8px !default;
+$carousel-bullet-outer-width: 24px !default;
+$carousel-bullet-outer-height: 24px !default;
+$carousel-bullet-radius: 50% !default;
+
 .carousel-item {
-    display: none;
+	display: none;
 
 	// This if for measuring height
 	&.is-loading {
-
 		&:not(.is-active) {
 			display: block;
 			position: absolute;
@@ -12,77 +22,83 @@
 		}
 	}
 
-    &.is-active {
-        display: block;
-    }
+	&.is-active {
+		display: block;
+	}
 }
 
 .carousel-bullets {
-    display: inline-flex;
+	display: inline-flex;
 }
 
 .carousel-bullet {
-    display: block;
+	display: block;
 	position: relative;
-    width: $carousel-bullet--outer-width;
-    height: $carousel-bullet--outer-height;
-    padding: 0;
-    cursor: pointer;
-    line-height: 0;
-    border: none;
+	// Use local variables
+	width: $carousel-bullet-outer-width;
+	height: $carousel-bullet-outer-height;
+	padding: 0;
+	cursor: pointer;
+	line-height: 0;
+	border: none;
 	background: transparent;
 
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
-		left: ( $carousel-bullet--outer-width - $carousel-bullet--width ) / 2;
-		top: ( $carousel-bullet--outer-height - $carousel-bullet--height ) / 2;
-		background: color-icon(carousel-button);
-		width: $carousel-bullet--width;
-		height: $carousel-bullet--height;
-		border-radius: $carousel-bullet--radius;
-		transition: background .25s ease;
+		// Use local variables & math.div
+		left: math.div(
+			($carousel-bullet-outer-width - $carousel-bullet-width),
+			2
+		);
+		top: math.div(
+			($carousel-bullet-outer-height - $carousel-bullet-height),
+			2
+		);
+		// Replaced color-icon(), use placeholder color
+		background: map.get(c.$colors, low-contrast);
+		width: $carousel-bullet-width;
+		height: $carousel-bullet-height;
+		border-radius: $carousel-bullet-radius;
+		transition: background 0.25s ease;
 	}
 
-    &:focus {
-        outline: none;
-    }
+	&:focus {
+		outline: none;
+	}
 
-    &.is-active {
-
+	&.is-active {
 		&::before {
-        	background: color-icon(carousel-button-active);
+			background: map.get(c.$colors, primary);
 		}
-    }
+	}
 
-    &:hover {
-
+	&:hover {
 		&::before {
-        	background: color-icon(carousel-button-hover);
+			background: map.get(c.$colors, mid-contrast);
 		}
-    }
+	}
 }
 
 .invert-color {
-
 	.carousel-bullet {
-
 		&::before {
-			background: color-icon(carousel-button-inverse);
+			// Replaced color-icon(), use placeholder color
+			background: map.get(c.$colors, low-contrast-inverse);
 		}
 
-	    &.is-active {
-
+		&.is-active {
 			&::before {
-	        	background: color-icon(carousel-button-active-inverse);
+				// Replaced color-icon(), use placeholder color
+				background: map.get(c.$colors, primary); // Or light?
 			}
-	    }
+		}
 
-	    &:hover {
-
+		&:hover {
 			&::before {
-	        	background: color-icon(carousel-button-hover-inverse);
+				// Replaced color-icon(), use placeholder color
+				background: map.get(c.$colors, mid-contrast-inverse);
 			}
-	    }
+		}
 	}
 }

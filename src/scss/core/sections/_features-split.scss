@@ -1,26 +1,26 @@
-.features-split {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
+.features-split {
 	.section-inner {
-		padding-top: $features-split--padding-t__mobile;
-		padding-bottom: $features-split--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.section-header {
-		padding-bottom: $features-split-header--padding__mobile;
+		padding-bottom: c.$spacing--shared-v;
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.features-split {
-
 		.section-inner {
-			padding-top: $features-split--padding-t__desktop;
-			padding-bottom: $features-split--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.section-header {
-			padding-bottom: $features-split-header--padding__desktop;
+			padding-bottom: c.$spacing--shared-v;
 		}
 	}
 }

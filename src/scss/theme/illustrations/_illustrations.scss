@@ -1,4 +1,4 @@
-[class*=illustration-] {
+[class*="illustration-"] {
 	position: relative;
 
 	&::after {
@@ -6,54 +6,53 @@
 	}
 }
 
-[class*=illustration-element-]::after {
+[class*="illustration-element-"]::after {
 	z-index: -1;
 }
 
-[class*=illustration-section-]::after {
+[class*="illustration-section-"]::after {
 	z-index: -2;
 }
 
 // Hero illustration
 .illustration-section-01::after {
-	@include illustration('illustration-section-01.svg', 100%, 443px, top);
+	background-image: url("../images/illustration-section-01.svg");
 }
 
 // Features tiles illustration
 .illustration-section-02::after {
-	@include illustration('illustration-section-02.svg', 100%, 663px, top, null, 106px);
+	background-image: url("../images/illustration-section-02.svg");
 }
 
 // Features tiles illustration
 .illustration-section-03::after {
-	@include illustration('illustration-section-03.svg', 100%, 274px, top, null, -15px);
+	background-image: url("../images/illustration-section-03.svg");
 }
 
 // Cta illustration
 .illustration-section-04::after {
-	@include illustration('illustration-section-04.svg', 100%, 160px, bottom, null, -34px);
+	background-image: url("../images/illustration-section-04.svg");
 }
 
 // Pricing section illustration
 .illustration-section-05::after {
-	@include illustration('illustration-section-05.svg', 200%, 274px, top, null, -16px);
+	background-image: url("../images/illustration-section-05.svg");
 }
 
 // Generic illustration
 .illustration-section-06::after {
-	@include illustration('illustration-section-06.svg', 100%, 274px, top, null, 370px);
+	background-image: url("../images/illustration-section-06.svg");
 }
 
 // Behind hero figure
 .illustration-element-01 {
-
 	&::after {
-		@include illustration('illustration-element-01.svg', 200%, 200%);
+		background-image: url("../images/illustration-element-01.svg");
 	}
 
 	// gradient
 	&::before {
-		@include illustration('illustration-element-01b.svg', 100vw, 120%, bottom, null, -65%);
+		background-image: url("../images/illustration-element-01b.svg");
 		background-size: cover;
 		background-repeat: repeat;
 		pointer-events: none;
@@ -63,36 +62,36 @@
 
 // Behind features split image
 .illustration-element-02::after {
-	@include illustration('illustration-element-02.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-02.svg");
 }
 
 .illustration-element-03::after {
-	@include illustration('illustration-element-03.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-03.svg");
 }
 
 .illustration-element-04::after {
-	@include illustration('illustration-element-04.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-04.svg");
 }
 
 // Behind team
 .illustration-element-05::before {
-	@include illustration('illustration-element-05.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-05.svg");
 	pointer-events: none;
 	z-index: -1;
 }
 
 .illustration-element-06::after {
-	@include illustration('illustration-element-06.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-06.svg");
 	z-index: 0;
 }
 
 .illustration-element-07::before {
-	@include illustration('illustration-element-07.svg', 200%, 200%);
+	background-image: url("../images/illustration-element-07.svg");
 	pointer-events: none;
 	z-index: -1;
 }
 
 .illustration-element-08::after {
-	@include illustration('illustration-element-08.svg', 300%, 300%);
+	background-image: url("../images/illustration-element-08.svg");
 	z-index: 0;
 }

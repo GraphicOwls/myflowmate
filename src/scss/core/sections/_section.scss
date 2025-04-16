@@ -1,21 +1,23 @@
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+
 .section-inner {
-    position: relative; // To always display inner elements above pseudo decorative stuff
-    padding-top: $section--padding__mobile;
-    padding-bottom: $section--padding__mobile;
+	position: relative; // To always display inner elements above pseudo decorative stuff
+	padding-top: c.$spacing--shared-v;
+	padding-bottom: c.$spacing--shared-v;
 }
 
 .section-header {
-	padding-bottom: $section-header--padding__mobile;
+	padding-bottom: c.$spacing--shared-v;
 }
 
-@include media( '>medium' ) {
-
-    .section-inner {
-        padding-top: $section--padding__desktop;
-        padding-bottom: $section--padding__desktop;
-    }
+@include mx.media(">medium") {
+	.section-inner {
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
+	}
 
 	.section-header {
-		padding-bottom: $section-header--padding__desktop;
+		padding-bottom: c.$spacing--shared-v;
 	}
 }

@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "sass:string";
+@use "sass:list";
 @forward "variables";
 @use "variables" as *;
 
@@ -16,7 +17,7 @@
 // Get font size
 @function get-font-size($elem) {
 	@if map.get($font-size, $elem) {
-		@return nth(map.get($font-scale, map.get($font-size, $elem)), 1);
+		@return list.nth(map.get($font-scale, map.get($font-size, $elem)), 1);
 	}
 	@return null;
 }
@@ -24,7 +25,7 @@
 // Get line height
 @function get-line-height($elem) {
 	@if map.get($font-size, $elem) {
-		@return nth(map.get($font-scale, map.get($font-size, $elem)), 2);
+		@return list.nth(map.get($font-scale, map.get($font-size, $elem)), 2);
 	}
 	@return null;
 }
@@ -32,7 +33,7 @@
 // Get kerning
 @function get-kerning($elem) {
 	@if map.get($font-size, $elem) {
-		@return nth(map.get($font-scale, map.get($font-size, $elem)), 3);
+		@return list.nth(map.get($font-scale, map.get($font-size, $elem)), 3);
 	}
 	@return null;
 }

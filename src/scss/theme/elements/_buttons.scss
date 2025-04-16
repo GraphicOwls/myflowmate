@@ -1,12 +1,24 @@
+@use "sass:map";
+@use "sass:color";
+@use "../../functions" as fn;
+@use "../../colors" as c;
+
 .button {
-	box-shadow: 0 8px 20px rgba(get-color(dark, 1), .1);
+	$shadow-color: fn.get-color(dark, 1);
+	box-shadow: 0 8px 20px rgba($shadow-color, 0.1);
 
 	&:not(.button-dark):not(.button-primary):not(.button-secondary) {
-		background: linear-gradient(65deg, get-color(light, 1) 0, rgba(get-color(light, 1), .8) 100%);
+		$gradient-color-1: fn.get-color(light, 1);
+		$gradient-color-2: rgba($gradient-color-1, 0.8);
+		background: linear-gradient(
+			65deg,
+			$gradient-color-1 0,
+			$gradient-color-2 100%
+		);
 		background-origin: border-box;
 
 		&:hover {
-			background-color: color-bg(button-light-hover);
+			background-color: map.get(c.$colors, bg, button-light-hover);
 		}
 	}
 }

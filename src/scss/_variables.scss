@@ -1,3 +1,5 @@
+@use "sass:map"; // Add map module
+
 // Core color palette (raw values)
 $palette-colors: (
 	light: (
@@ -130,6 +132,51 @@ $breakpoints: (
 	large: 992px,
 	xlarge: 1200px,
 );
+
+// Spacing unit
+$spacing-unit: 1rem !default; // Approx 16px
+
+// Shared spacing values
+$spacing--shared-v: $spacing-unit * 1.5 !default; // 1.5rem / 24px
+$spacing--shared-h: $spacing-unit * 1.5 !default; // 1.5rem / 24px
+
+// Figure spacing
+$spacing--figure-v: $spacing-unit * 2 !default; // 2rem / 32px
+$spacing--figure-h: 0 !default;
+$spacing--figcaption-v: $spacing-unit * 0.75 !default; // 0.75rem / 12px
+$spacing--figcaption-h: $spacing-unit * 1.5 !default; // 1.5rem / 24px
+
+// Table spacing
+$spacing--table-cell-v: $spacing-unit * 0.75 !default; // 0.75rem / 12px
+$spacing--table-cell-h: $spacing-unit * 0.75 !default; // 0.75rem / 12px
+
+// Image radius
+$img-radius: 4px !default;
+
+// Image larger helper extra width
+$image-larger--extra-width: $spacing-unit * 4 !default; // 4rem / 64px
+
+// Container padding
+$container--padding__mobile: $spacing-unit * 1.5 !default; // 1.5rem / 24px
+$container--padding__desktop: $spacing-unit * 2 !default; // 2rem / 32px
+
+// Container max widths
+$container--width: map.get($breakpoints, large) !default; // 992px
+$container--width-sm: map.get($breakpoints, medium) !default; // 768px
+$container--width-xs: map.get($breakpoints, small) !default; // 480px
+
+// Button/Form variables
+$button-form--height: 48px !default;
+$button-form--border-width: 2px !default;
+$button-form--border-style: solid !default;
+$button--padding-h: $spacing-unit * 1.5 !default; // 24px
+$button--radius: 4px !default;
+$button--transform: none !default;
+$button-loading--thickness: 2px !default;
+$button-form-sm--height: 40px !default;
+$button-sm--padding-h: $spacing-unit * 1.25 !default; // 20px
+$button-group-padding: $spacing-unit !default; // 16px
+$button--max-size-mobile: 240px !default;
 
 // Scroll reveal animation amounts
 $scroll-reveal--transition-duration: 0.6s !default;

@@ -1,3 +1,9 @@
+@use "sass:map";
+@use "../../variables" as *;
+@use "../../functions" as fn;
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+
 // Hide elements, for screen readers only
 .screen-reader {
 	position: absolute;
@@ -5,7 +11,7 @@
 	height: 1px;
 	padding: 0;
 	overflow: hidden;
-	clip: rect(0,0,0,0);
+	clip: rect(0, 0, 0, 0);
 	white-space: nowrap;
 	border: 0;
 }
@@ -22,15 +28,15 @@
 
 // Text alignment
 .ta-l {
-  text-align: left;
+	text-align: left;
 }
 
 .ta-c {
-  text-align: center;
+	text-align: center;
 }
 
 .ta-r {
-  text-align: right;
+	text-align: right;
 }
 
 // Font weight
@@ -52,49 +58,48 @@
 
 // Text color
 .text-color-high {
-	color: color(high-contrast);
+	color: map.get(c.$colors, text, high-contrast);
 }
 
 .text-color-mid {
-	color: color(mid-contrast);
+	color: map.get(c.$colors, text, mid-contrast);
 }
 
 .text-color-low {
-	color: color(low-contrast);
+	color: map.get(c.$colors, text, low-contrast);
 }
 
 .text-color-primary {
-	color: color(primary);
+	color: map.get(c.$colors, text, primary);
 }
 
 .text-color-secondary {
-	color: color(secondary);
+	color: map.get(c.$colors, text, secondary);
 }
 
 .text-color-error {
-	color: color(error);
+	color: map.get(c.$colors, text, error);
 }
 
 .text-color-warning {
-	color: color(warning);
+	color: map.get(c.$colors, text, warning);
 }
 
 .text-color-success {
-	color: color(success);
+	color: map.get(c.$colors, text, success);
 }
 
 .invert-color {
-
 	.text-color-high {
-		color: color(high-contrast-inverse);
+		color: map.get(c.$colors, text, high-contrast-inverse);
 	}
 
 	.text-color-mid {
-		color: color(mid-contrast-inverse);
+		color: map.get(c.$colors, text, mid-contrast-inverse);
 	}
 
 	.text-color-low {
-		color: color(low-contrast-inverse);
+		color: map.get(c.$colors, text, low-contrast-inverse);
 	}
 }
 
@@ -119,13 +124,13 @@
 // Helper class for coloured bg
 .has-bg-color {
 	position: relative;
-	background-color: color-bg(bg-color);
+	background-color: map.get(c.$colors, bg, bg-color);
 	z-index: 0;
 }
 
 // Helper class for box shadow
 .has-shadow {
-	box-shadow: color-bg(shadow);
+	box-shadow: map.get(c.$colors, bg, shadow);
 }
 
 img.has-shadow {
@@ -134,21 +139,20 @@ img.has-shadow {
 
 // Dividers
 .has-top-divider {
-    @include divider(before);
+	@include mx.divider(before);
 }
 
 .has-bottom-divider {
-    @include divider(after);
+	@include mx.divider(after);
 }
 
 .invert-color {
-
 	.has-top-divider {
-	    @include divider(before, inverse);
+		@include mx.divider(before, inverse);
 	}
 
 	.has-bottom-divider {
-	    @include divider(after, inverse);
+		@include mx.divider(after, inverse);
 	}
 }
 
@@ -184,7 +188,7 @@ img.has-shadow {
 		left: 0;
 		width: 100%;
 		height: 100%;
-    }
+	}
 }
 
 // Spacing, margin
@@ -502,8 +506,7 @@ img.has-shadow {
 	padding-top: 64px;
 }
 
-@include media( '<=medium' ) {
-
+@include mx.media("<=medium") {
 	.ta-l-mobile {
 		text-align: left;
 	}
@@ -562,11 +565,10 @@ img.has-shadow {
 
 	.spacer-64-mobile {
 		padding-top: 64px;
-	}	
+	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.ta-l-desktop {
 		text-align: left;
 	}

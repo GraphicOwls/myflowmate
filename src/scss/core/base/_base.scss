@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:math";
 @use "../../variables" as *;
 @use "../../functions" as fn;
 @use "../../colors" as c;
@@ -15,14 +16,14 @@ html {
 }
 
 body {
-	background: map.get($colors, bg, body);
+	background: map.get(c.$colors, bg, body);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
 
 hr {
 	border: 0;
-	@include divider();
+	@include mx.divider();
 	margin-top: $spacing--shared-v;
 	margin-bottom: $spacing--shared-v;
 }
@@ -47,13 +48,13 @@ ol {
 
 li {
 	&:not(:last-child) {
-		margin-bottom: $spacing--shared-v / 2;
+		margin-bottom: math.div($spacing--shared-v, 2);
 	}
 }
 
 li > ul,
 li > ol {
-	margin-top: $spacing--shared-v / 2;
+	margin-top: math.div($spacing--shared-v, 2);
 	margin-bottom: 0;
 }
 
@@ -63,7 +64,7 @@ dl {
 }
 
 dt {
-	@include font-weight(strong);
+	@include mx.font-weight(strong);
 }
 
 dd {
@@ -93,7 +94,7 @@ figcaption {
 
 // tables
 table {
-	@include font-size(table);
+	@include mx.font-size(table);
 	border-collapse: collapse;
 	margin-bottom: $spacing--shared-v;
 	width: 100%;
@@ -104,7 +105,7 @@ tr {
 }
 
 th {
-	@include font-weight(strong);
+	@include mx.font-weight(strong);
 	text-align: left;
 }
 
@@ -123,7 +124,7 @@ td {
 
 .invert-color {
 	hr {
-		@include divider(false, inverse);
+		@include mx.divider(false, inverse);
 	}
 
 	tr {

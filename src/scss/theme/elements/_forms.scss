@@ -1,10 +1,14 @@
-.form-input {
+@use "sass:color";
+@use "../../functions" as fn;
 
+.form-input {
 	&:focus {
-		box-shadow: 0 8px 20px rgba(get-color(dark, 1), .16);
+		$shadow-color: fn.get-color(dark, 1);
+		box-shadow: 0 8px 20px rgba($shadow-color, 0.16);
 
 		~ .button {
-			box-shadow: 0 8px 20px rgba(get-color(dark, 1), .16);
+			$button-shadow-color: fn.get-color(dark, 1);
+			box-shadow: 0 8px 20px rgba($button-shadow-color, 0.16);
 		}
 	}
 }

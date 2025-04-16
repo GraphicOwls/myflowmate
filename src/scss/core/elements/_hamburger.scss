@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../colors" as c;
+@use "../../functions" as fn;
+
 .header-nav-toggle {
 	background: transparent;
 	border: 0;
@@ -14,44 +19,56 @@
 
 .hamburger {
 	position: relative;
-	width: $header-hamburger--size;
-	height: $header-hamburger--size;
+	$hamburger-size: c.$spacing-unit * 1.5;
+	width: $hamburger-size;
+	height: $hamburger-size;
 }
 
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-	width: $header-hamburger--size;
-	height: $header-hamburger--thickness;
+	$hamburger-size: c.$spacing-unit * 1.5;
+	$hamburger-thickness: c.$button-form--border-width;
+	$hamburger-radius: c.$button--radius * 0.5;
+	$hamburger-distance: c.$spacing-unit * 0.5;
+
+	width: $hamburger-size;
+	height: $hamburger-thickness;
 	position: absolute;
-	background: color-icon(hamburger);
-	border-radius: $header-hamburger--radius;
+	background: map.get(c.$colors, icon, hamburger);
+	border-radius: $hamburger-radius;
 
 	.invert-color & {
-		background: color-icon(hamburger-inverse);
+		background: map.get(c.$colors, icon, hamburger-inverse);
 	}
 }
 
 .hamburger-inner {
+	$hamburger-thickness: c.$button-form--border-width;
+	$hamburger-distance: c.$spacing-unit * 0.5;
+	$hamburger-size: c.$spacing-unit * 1.5;
+
 	top: 50%;
-	margin-top: -($header-hamburger--thickness / 2);
+	margin-top: -(math.div($hamburger-thickness, 2));
 	transition-duration: 0.22s;
 	transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 
 	&::before,
 	&::after {
-		content: '';
+		content: "";
 		display: block;
 	}
 
 	&::before {
-		top: -$header-hamburger--distance;
+		top: -$hamburger-distance;
 		transition: top 0.1s 0.25s ease-in, opacity 0.1s ease-in;
 	}
 
 	&::after {
-		bottom: -$header-hamburger--distance;
-		transition: bottom 0.1s 0.25s ease-in, transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19), width 0.1s 0.25s ease-in;
+		bottom: -$hamburger-distance;
+		transition: bottom 0.1s 0.25s ease-in,
+			transform 0.22s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+			width 0.1s 0.25s ease-in;
 	}
 
 	.off-nav-is-active & {
@@ -66,10 +83,12 @@
 		}
 
 		&::after {
-			width: $header-hamburger--size;
+			width: $hamburger-size;
 			bottom: 0;
 			transform: rotate(-90deg);
-			transition: bottom 0.1s ease-out, transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s ease-out;
+			transition: bottom 0.1s ease-out,
+				transform 0.22s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1),
+				width 0.1s ease-out;
 		}
 	}
 }

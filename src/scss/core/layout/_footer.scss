@@ -1,89 +1,120 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+
+// Define local defaults for footer variables
+$footer-block-min-width: 200px !default;
+$footer-block-list-padding: math.div(c.$spacing-unit, 2) !default; // 0.5rem
+$link-footer-block-transform: none !default;
+$footer-block-title-transform: uppercase !default;
+$footer-block-title-padding: c.$spacing-unit !default; // 1rem
+$footer-social-inner-padding: c.$spacing-unit * 0.5 !default; // 0.5rem
+$footer-social-outer-padding-h: c.$spacing-unit * 0.5 !default; // 0.5rem
+$footer-nav-padding-h: c.$spacing-unit !default; // 1rem
+$link-footer-transform: none !default;
+
 .site-footer {
 	position: relative;
 
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: color-bg(footer);
+		// Replace color-bg(), assuming bg.footer exists
+		background: map.get(c.$colors, bg, footer);
 		z-index: -3;
 	}
 }
 
 .site-footer-inner {
-	padding: $footer--padding__mobile 0;
+	// Use shared spacing var
+	padding: c.$spacing--shared-v 0;
 }
 
 .footer-top {
-	padding-bottom: $footer-inner--padding-v / 2;
+	// Use shared spacing var & math.div
+	padding-bottom: math.div(c.$spacing--shared-v, 2);
 }
 
 .footer-bottom {
-	padding-top: $footer-inner--padding-v / 2;
+	// Use shared spacing var & math.div
+	padding-top: math.div(c.$spacing--shared-v, 2);
 }
 
 .footer-blocks {
 	display: flex;
 	flex-wrap: wrap;
-	margin-right: -($footer-block--padding_h / 2);
-	margin-left: -($footer-block--padding_h / 2);
-	margin-top: -($footer-block--padding_v / 2);
+	// Use shared spacing var & math.div
+	margin-right: -(math.div(c.$spacing--shared-h, 2));
+	margin-left: -(math.div(c.$spacing--shared-h, 2));
+	margin-top: -(math.div(c.$spacing--shared-v, 2));
 
 	&:last-of-type {
-		margin-bottom: -($footer-block--padding_v / 2) + $footer-blocks--padding;
+		// Use shared spacing var & math.div
+		margin-bottom: -(math.div(c.$spacing--shared-v, 2)) + c.$spacing--shared-v;
 	}
 
 	&:not(:last-of-type) {
-		margin-bottom: ($footer-block--padding_v / 2);
+		// Use shared spacing var & math.div
+		margin-bottom: math.div(c.$spacing--shared-v, 2);
 	}
 }
 
 .footer-block {
 	flex-grow: 1;
-	flex-basis: $footer-block--min-width;
+	// Use local variable
+	flex-basis: $footer-block-min-width;
 	box-sizing: content-box;
-	padding: $footer-block--padding_v / 2 $footer-block--padding_h / 2;
+	// Use shared spacing vars & math.div
+	padding: math.div(c.$spacing--shared-v, 2) math.div(c.$spacing--shared-h, 2);
 
 	* {
 		box-sizing: border-box;
 	}
 
 	ul li {
-
 		&:not(:last-child) {
+			// Use local variable
 			margin-bottom: $footer-block-list-padding;
 		}
 	}
 
 	a {
-		@include anchor-aspect(footer-block);
-		@include font-weight(footer-block-link);
-		text-transform: $link-footer-block--transform;
+		// REMOVED @include anchor-aspect(footer-block);
+		// Add mx. prefix
+		@include mx.font-weight(footer-block-link);
+		// Use local variable
+		text-transform: $link-footer-block-transform;
 
 		.invert-color & {
-			@include anchor-aspect(footer-block, inverse);
+			// REMOVED @include anchor-aspect(footer-block, inverse);
 		}
 	}
 }
 
 .footer-block-title {
-	@include font-size(block-title);
-	@include font-weight(block-title);
-	color: color(block-title);
-	text-transform: $footer-block-title--transform;
+	// Add mx. prefixes
+	@include mx.font-size(block-title);
+	@include mx.font-weight(block-title);
+	// Replace color(), assuming block-title key exists
+	color: map.get(c.$colors, text, block-title);
+	// Use local variable
+	text-transform: $footer-block-title-transform;
+	// Use local variable
 	margin-bottom: $footer-block-title-padding;
 
 	.invert-color & {
-		color: color(block-title-inverse);
+		// Replace color(), assuming block-title-inverse key exists
+		color: map.get(c.$colors, text, block-title-inverse);
 	}
 }
 
 .footer-social,
 .footer-nav {
-
 	a {
 		display: flex;
 	}
@@ -99,35 +130,42 @@
 }
 
 .footer-social {
-
 	ul {
-		margin-right: -($footer-social--inner-padding + $footer-social--outer-padding-h);
-		margin-left: -($footer-social--inner-padding + $footer-social--outer-padding-h);
+		// Use local variables
+		margin-right: -($footer-social-inner-padding +
+					$footer-social-outer-padding-h);
+		margin-left: -($footer-social-inner-padding +
+					$footer-social-outer-padding-h);
 	}
 
 	li {
-		padding: 0 $footer-social--outer-padding-h;
+		// Use local variable
+		padding: 0 $footer-social-outer-padding-h;
 	}
 
 	a {
-		padding: $footer-social--inner-padding;
+		// Use local variable
+		padding: $footer-social-inner-padding;
 
 		svg {
-			fill: color-icon(social);
-			transition: fill .15s ease;
+			// Replace color-icon()
+			fill: map.get(c.$colors, icon, social);
+			transition: fill 0.15s ease;
 
 			.invert-color & {
-				fill: color-icon(social-inverse);
+				// Replace color-icon()
+				fill: map.get(c.$colors, icon, social-inverse);
 			}
 		}
 
 		&:hover {
-
 			svg {
-				fill: color-icon(social-hover);
+				// Replace color-icon()
+				fill: map.get(c.$colors, icon, social-hover);
 
 				.invert-color & {
-					fill: color-icon(social-hover-inverse);
+					// Replace color-icon()
+					fill: map.get(c.$colors, icon, social-hover-inverse);
 				}
 			}
 		}
@@ -135,44 +173,45 @@
 }
 
 .footer-nav {
-	margin-right: -$footer-nav--padding-h;
-	margin-left: -$footer-nav--padding-h;
+	// Use local variable
+	margin-right: -$footer-nav-padding-h;
+	margin-left: -$footer-nav-padding-h;
 
 	a {
-		@include anchor-aspect(footer);
-		@include font-weight(footer-link);
-		text-transform: $link-footer--transform;
-		padding: 0 $footer-nav--padding-h;
+		// REMOVED @include anchor-aspect(footer);
+		// Add mx. prefix
+		@include mx.font-weight(footer-link);
+		// Use local variable
+		text-transform: $link-footer-transform;
+		// Use local variable
+		padding: 0 $footer-nav-padding-h;
 
 		.invert-color & {
-			@include anchor-aspect(footer, inverse);
+			// REMOVED @include anchor-aspect(footer, inverse);
 		}
 	}
 }
 
-@include media( '<=medium' ) {
-
+// Add mx. prefix
+@include mx.media("<=medium") {
 	.footer-top,
 	.footer-bottom {
-
 		> *:not(:last-child) {
-			margin-bottom: $footer-inner--padding-v;
+			// Use shared spacing var
+			margin-bottom: c.$spacing--shared-v;
 		}
 	}
 }
 
-@include media( '>medium' ) {
-
-	@if ( $footer--padding__mobile != $footer--padding__desktop ) {
-
-		.site-footer-inner {
-			padding: $footer--padding__desktop 0;
-		}
+// Add mx. prefix
+@include mx.media(">medium") {
+	.site-footer-inner {
+		// Use shared spacing var
+		padding: c.$spacing--shared-v 0;
 	}
 
 	.footer-top,
 	.footer-bottom {
-
 		&.space-between {
 			display: flex;
 			justify-content: space-between;
@@ -182,9 +221,7 @@
 
 	.footer-top,
 	.footer-bottom {
-
 		&.invert-order-desktop {
-
 			> *:first-child {
 				order: 1;
 			}

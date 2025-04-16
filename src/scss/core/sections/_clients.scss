@@ -1,17 +1,18 @@
-.clients {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
+.clients {
 	.section-inner {
-		padding-top: $clients--padding-t__mobile;
-		padding-bottom: $clients--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.section-header {
-		padding-bottom: $clients-header--padding__mobile;
+		padding-bottom: c.$spacing--shared-v;
 	}
 }
 
 .clients-inner {
-
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -22,25 +23,22 @@
 	}
 
 	li {
-		padding: $clients-items--padding-v $clients-items--padding-h;
+		padding: c.$spacing--shared-v c.$spacing--shared-h;
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.clients {
-
 		.section-inner {
-			padding-top: $clients--padding-t__desktop;
-			padding-bottom: $clients--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.section-header {
-			padding-bottom: $clients-header--padding__desktop;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.clients-inner {
-
 			ul {
 				flex-direction: row;
 			}

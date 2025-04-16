@@ -18,7 +18,7 @@ h6,
 .h6 {
 	@include mx.font-family(heading);
 	@include mx.font-weight(heading);
-	color: map-get(c.$color, heading);
+	color: map.get(c.$colors, heading);
 	clear: both;
 }
 
@@ -59,7 +59,7 @@ blockquote {
 	@include mx.font-weight(bquote);
 	margin: 1.5em 0;
 	padding: 0 1em;
-	border-left: 3px solid map-get(c.$border-color, divider);
+	border-left: 3px solid map.get(c.$colors, border, divider);
 
 	&:first-child {
 		margin-top: 0;
@@ -83,7 +83,7 @@ var {
 	@include mx.font-size(code);
 	padding: 0.2em 0.4em;
 	margin: 0;
-	background: map.get(c.$bg-color, code);
+	background: map.get(c.$colors, bg, code);
 	border-radius: 3px;
 }
 

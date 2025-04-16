@@ -1,21 +1,21 @@
-.hero {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
+.hero {
 	.section-inner {
-		padding-top: $hero--padding-t__mobile;
-		padding-bottom: $hero--padding-b__mobile;
+		padding-top: c.$spacing--shared-v * 2;
+		padding-bottom: c.$spacing--shared-v * 2;
 	}
 }
 
 .hero-inner {
-
 	// Affects only hero full
 	> .hero-content + .hero-figure,
 	> .hero-figure + .hero-content {
-		margin-top: $hero--inner-padding-v_mobile;
+		margin-top: c.$spacing--shared-v;
 	}
 
 	> .hero-figure {
-
 		> a {
 			display: inline-flex;
 			// prevents stretching
@@ -25,25 +25,19 @@
 	}
 }
 
-@include media( '<=medium' ) {
-
+@include mx.media("<=medium") {
 	.hero {
-
 		.split-wrap {
-
 			.split-item {
-
 				.split-item-content {
-					margin-bottom: $hero--inner-padding-v_mobile;
+					margin-bottom: c.$spacing--shared-v;
 				}
 			}
 
 			&.invert-mobile {
-
 				.split-item {
-
 					.split-item-image {
-						margin-bottom: $hero--inner-padding-v_mobile;
+						margin-bottom: c.$spacing--shared-v;
 					}
 				}
 			}
@@ -51,22 +45,19 @@
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.hero {
-
 		.section-inner {
-			padding-top: $hero--padding-t__desktop;
-			padding-bottom: $hero--padding-b__desktop;
+			padding-top: c.$spacing--shared-v * 3;
+			padding-bottom: c.$spacing--shared-v * 3;
 		}
 	}
 
 	.hero-inner {
-
 		// Affects only hero full
 		> .hero-content + .hero-figure,
 		> .hero-figure + .hero-content {
-			margin-top: $hero--inner-padding-v_desktop;
+			margin-top: c.$spacing--shared-v * 1.5;
 		}
 	}
 }

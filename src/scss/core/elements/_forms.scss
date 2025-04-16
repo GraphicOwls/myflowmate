@@ -1,19 +1,24 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../colors" as c;
+@use "../../functions" as fn;
+@use "../../mixins" as mx;
+
 fieldset {
 	/* Reset fieldset */
-    padding: 0;
-    margin: 0;
-    border: 0;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 .form-label,
 .form-switch {
-    color: color(label);
-    @include font-weight(label);
-
+	color: map.get(c.$colors, label);
+	@include mx.font-weight(label);
 }
 
 .form-label {
-	@include font-size(label);
+	@include mx.font-size(label);
 }
 
 .form-input,
@@ -22,176 +27,72 @@ fieldset {
 .form-radio input {
 	-moz-appearance: none;
 	-webkit-appearance: none;
-	background-color: color-bg(input);
-	border-width: $button-form--border-width;
-	border-style: $button-form--border-style;
-	border-color: color-border(input);
-
-	&:hover {
-		border-color: color-border(input-hover);
-	}
-
-	&:active,
-	&:focus {
-		outline: none;
-		border-color: color-border(input-focus);
-		background-color: color-bg(input-focus);
-	}
+	background-color: map.get(c.$colors, bg, input);
+	border-width: c.$button-form--border-width;
+	border-style: c.$button-form--border-style;
+	border-color: map.get(c.$colors, border, input);
+	border-radius: c.$button--radius;
+	color: map.get(c.$colors, text, input);
+	display: block;
+	@include mx.font-size(input);
+	@include mx.font-weight(input);
+	height: c.$button-form--height;
+	line-height: fn.get-line-height(input);
+	padding: math.div(
+			(
+				c.$button-form--height - fn.get-line-height(input) -
+					(c.$button-form--border-width * 2)
+			),
+			2
+		)
+		calc(c.$button--padding-h - c.$button-form--border-width);
+	width: 100%;
+	transition: border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 
 	&[disabled] {
 		cursor: not-allowed;
-		background-color: color-bg(input-disabled);
-		border-color: color-border(input-disabled);
+		background-color: map.get(c.$colors, bg, input-disabled);
 	}
 
-	&.form-error {
-		border-color: get-color(alert, error);
+	&:focus {
+		border-color: map.get(c.$colors, primary);
+		box-shadow: 0 0 0 3px rgba(map.get(c.$colors, primary), 0.5);
+		outline: none;
 	}
 
-	&.form-warning {
-		border-color: get-color(alert, warning);
-	}
-
-	&.form-success {
-		border-color: get-color(alert, success);
+	&::placeholder {
+		color: map.get(c.$colors, text, input-placeholder);
+		opacity: 1; // Override Firefox's lower default opacity
 	}
 }
 
 .form-input,
-.form-select {
-	display: block;
-	@include font-size(input);
-	@include font-weight(input);
-	padding: (($button-form--height - get-line-height(input) - ($button-form--border-width * 2)) / 2) ($form--padding-h - $button-form--border-width);
-	height: $button-form--height;
-	border-radius: $form--radius;
-    color: color(input);
-	box-shadow: none;
-    max-width: 100%;
-    width: 100%;
+.form-radio {
+	color: map.get(c.$colors, label);
 }
 
-.form-input {
-
-    &::placeholder {
-        color: color(input-placeholder);
-    }
-
-    &::-ms-input-placeholder {
-        color: color(input-placeholder);
-    }
-}
-
-textarea.form-input {
-	height: auto;
-    resize: vertical;
-}
-
-.form-select {
-	padding-right: ($form--padding-h - $button-form--border-width) * 2 + 16;
-    background-image: inline-svg('<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.4L2.6 6 4 4.6l4 4 4-4L13.4 6 8 11.4z" fill="' + color-icon(select-arrow) + '" fill-rule="evenodd"/></svg>');
-    background-position: right ($form--padding-h - $button-form--border-width) center;
-    background-repeat: no-repeat;
-    background-size: 16px 16px;
-}
-
-.form-select-sm {
-	padding-right: ($form-sm--padding-h - $button-form--border-width) * 2 + 16;
-	background-position: right ($form-sm--padding-h - $button-form--border-width) center;
-}
-
-.form-select-sm,
-.form-input-sm {
-    padding: (($button-form-sm--height - get-line-height(input) - ($button-form--border-width * 2)) / 2) ($form-sm--padding-h - $button-form--border-width);
-	height: $button-form-sm--height;
-}
-
-.has-icon-left,
-.has-icon-right {
+.form-checkbox,
+.form-radio {
 	position: relative;
-
-	svg {
-		pointer-events: none;
-		position: absolute;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-}
-
-.has-icon-left {
-
-	.form-input {
-		padding-left: ($form--padding-h - $button-form--border-width) * 2 + 16;
-
-		+ svg {
-			left: $form--padding-h - $button-form--border-width;
-		}
-	}
-
-	.form-input-sm {
-		padding-left: ($form-sm--padding-h - $button-form--border-width) * 2 + 16;
-
-		+ svg {
-			left: $form-sm--padding-h - $button-form--border-width;
-		}
-	}
-}
-
-.has-icon-right {
-
-	.form-input {
-		padding-right: ($form--padding-h - $button-form--border-width) * 2 + 16;
-
-		+ svg {
-			right: $form--padding-h - $button-form--border-width;
-		}
-	}
-
-	.form-input-sm {
-		padding-right: ($form-sm--padding-h - $button-form--border-width) * 2 + 16;
-
-		+ svg {
-			right: $form-sm--padding-h - $button-form--border-width;
-		}
-	}
-}
-
-.form-checkbox,
-.form-radio,
-.form-switch {
-	@include font-size(check-radio);
-    @include font-weight(check-radio);
-    cursor: pointer;
-}
-
-.form-checkbox,
-.form-radio {
-	color: color(check-radio);
-}
-
-.form-checkbox,
-.form-radio {
-    position: relative;
 	padding-left: 24px;
 
 	input {
 		position: absolute;
 		left: 0;
-		top: ( ( get-line-height(check-radio) - 16 ) / 2 ) - 1; // -1 is for optical adjustement
+		top: math.div((fn.get-line-height(check-radio) - 16), 2) - 1;
 		width: 16px;
 		height: 16px;
 		cursor: pointer;
 
 		&:checked {
-			background-color: color-bg(check-radio-checked) !important;
-			border-color: color-bg(check-radio-checked) !important;
+			background-color: map.get(c.$colors, primary) !important;
+			border-color: map.get(c.$colors, primary) !important;
 			background-position: 50%;
 		}
 	}
 }
 
 .form-checkbox {
-
 	input {
 		border-radius: 2px;
 
@@ -202,7 +103,6 @@ textarea.form-input {
 }
 
 .form-radio {
-
 	input {
 		border-radius: 50%;
 
@@ -213,8 +113,8 @@ textarea.form-input {
 }
 
 .form-switch {
-    display: inline-flex;
-    align-items: center;
+	display: inline-flex;
+	align-items: center;
 	user-select: none;
 
 	input {
@@ -227,16 +127,16 @@ textarea.form-input {
 	}
 
 	.form-switch-icon {
-        display: block;
-        position: relative;
-        min-width: 60px;
+		display: block;
+		position: relative;
+		min-width: 60px;
 		width: 60px;
 		height: 32px;
 		border-radius: 16px;
-		background: color-bg(switch);
+		background: map.get(c.$colors, border, input);
 
 		&::before {
-			content: '';
+			content: "";
 			display: block;
 			position: absolute;
 			top: 2px;
@@ -244,115 +144,106 @@ textarea.form-input {
 			width: 28px;
 			height: 28px;
 			border-radius: 14px;
-			background: get-color(light, 1);
-			transition: all .15s ease-out;
+			background: fn.get-color(light, 1);
+			transition: all 0.15s ease-out;
 		}
 	}
 
 	input:checked {
-
 		+ .form-switch-icon {
-			background: color-bg(switch-checked);
+			background: map.get(c.$colors, primary);
 
 			&::before {
 				left: 30px;
 			}
 		}
-    }
-    
-    > span {
+	}
 
-        &:not(.form-switch-icon) {
-            order: -1;
-            margin-right: 12px;
+	> span {
+		&:not(.form-switch-icon) {
+			order: -1;
+			margin-right: 12px;
 
-            &:last-child {
-                order: initial;
-                margin-left: 12px;
-                margin-right: 0;
-            }
-        }
-    }
+			&:last-child {
+				order: initial;
+				margin-left: 12px;
+				margin-right: 0;
+			}
+		}
+	}
 }
 
 .invert-color {
-
-    .form-label,
-    .form-switch {
-		color: color(label-inverse);
+	.form-label,
+	.form-switch {
+		color: map.get(c.$colors, base-inverse);
 	}
 
 	.form-input,
 	.form-select,
 	.form-checkbox input,
 	.form-radio input {
-		background-color: color-bg(input-inverse);
-		border-color: color-border(input-inverse);
+		background-color: map.get(c.$colors, bg, input-inverse);
+		border-color: map.get(c.$colors, border, input-inverse);
 
 		&:hover {
-			border-color: color-border(input-hover-inverse);
+			border-color: map.get(c.$colors, border, input-inverse);
 		}
 
 		&:active,
 		&:focus {
-			border-color: color-border(input-focus-inverse);
-			background-color: color-bg(input-focus-inverse);
+			border-color: map.get(c.$colors, primary);
+			background-color: map.get(c.$colors, bg, input-focus-inverse);
 		}
 
 		&[disabled] {
-			background-color: color-bg(input-disabled-inverse);
-			border-color: color-border(input-disabled-inverse);
+			background-color: map.get(c.$colors, bg, input-disabled-inverse);
+			border-color: map.get(c.$colors, border, input-disabled-inverse);
 		}
 	}
 
 	.form-input,
 	.form-select {
-	    color: color(input-inverse);
+		color: map.get(c.$colors, text, input-inverse);
 	}
 
 	.form-input {
+		&::placeholder {
+			color: map.get(c.$colors, text, input-placeholder-inverse);
+		}
 
-	    &::placeholder {
-	        color: color(input-ph-inverse);
-	    }
-
-	    &::-ms-input-placeholder {
-	        color: color(input-ph-inverse);
-	    }
+		&::-ms-input-placeholder {
+			color: map.get(c.$colors, text, input-placeholder-inverse);
+		}
 	}
 
 	.form-select {
-	    background-image: inline-svg('<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.4L2.6 6 4 4.6l4 4 4-4L13.4 6 8 11.4z" fill="' + color-icon(select-arrow-inverse) + '" fill-rule="evenodd"/></svg>');
-    }
-    
-    .form-checkbox,
-    .form-radio {
-        color: color(check-radio-inverse);
-    }
+		background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='#{fn.url-encode("#{map.get(c.$colors, \"base-inverse\")}")}' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+	}
 
 	.form-checkbox,
 	.form-radio {
+		color: map.get(c.$colors, base-inverse);
+	}
 
+	.form-checkbox,
+	.form-radio {
 		input {
-
 			&:checked {
-				background-color: color-bg(check-checked-inverse) !important;
-				border-color: color-bg(check-checked-inverse) !important;
+				background-color: map.get(c.$colors, primary) !important;
+				border-color: map.get(c.$colors, primary) !important;
 			}
 		}
 	}
 
 	.form-switch {
-
 		.form-switch-icon {
-			background: color-bg(switch-inverse);
-
+			background: map.get(c.$colors, low-contrast-inverse);
 		}
 
 		input:checked {
-
 			+ .form-switch-icon {
-				background: color-bg(switch-checked-inverse);
+				background: map.get(c.$colors, primary);
 			}
 		}
 	}
@@ -364,9 +255,9 @@ textarea.form-input {
 	.form-input {
 		flex-grow: 1;
 		flex-shrink: 1;
-		margin-right: $button-form--group-padding;
+		margin-right: c.$button-group-padding;
 
-		@if ( $button-form--group-padding == null ) {
+		@if (c.$button-group-padding == null) {
 			border-top-right-radius: 0;
 			border-bottom-right-radius: 0;
 			border-right-width: 0;
@@ -374,35 +265,33 @@ textarea.form-input {
 	}
 
 	.button {
-        padding-left: $button-w-form--padding-h;
-		padding-right: $button-w-form--padding-h;
+		padding-left: c.$button--padding-h;
+		padding-right: c.$button--padding-h;
 		flex-shrink: 0;
 
-		@if ( $button-form--group-padding == null ) {
+		@if (c.$button-group-padding == null) {
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 		}
 	}
 
 	.button-sm {
-		padding-left: $button-sm-w-form--padding-h;
-		padding-right: $button-sm-w-form--padding-h;
+		padding-left: c.$button-sm--padding-h;
+		padding-right: c.$button-sm--padding-h;
 	}
 }
 
 .form-hint {
-	@include font-size(hint);
-	margin-top: $form-hint--margin;
+	@include mx.font-size(hint);
+	margin-top: math.div(c.$spacing-unit, 4);
 }
 
-@include media( '<=medium' ) {
-
+@include mx.media("<=medium") {
 	.form-group-desktop {
-
 		.form-input {
-			margin-bottom: $button-form--group-padding;
+			margin-bottom: c.$button-group-padding;
 
-			@if ( $button-form--group-padding == null ) {
+			@if (c.$button-group-padding == null) {
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: 0;
 				border-bottom-width: 0;
@@ -412,7 +301,7 @@ textarea.form-input {
 		.button {
 			width: 100%;
 
-			@if ( $button-form--group-padding == null ) {
+			@if (c.$button-group-padding == null) {
 				border-top-left-radius: 0;
 				border-top-right-radius: 0;
 			}
@@ -420,37 +309,50 @@ textarea.form-input {
 	}
 }
 
-@include media( '>medium' ) {
-
-    .form-group-desktop {
-        display: flex;
+@include mx.media(">medium") {
+	.form-group-desktop {
+		display: flex;
 
 		.form-input {
 			flex-grow: 1;
 			flex-shrink: 1;
-			margin-right: $button-form--group-padding;
+			margin-right: c.$button-group-padding;
 
-			@if ( $button-form--group-padding == null ) {
+			@if (c.$button-group-padding == null) {
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 				border-right-width: 0;
 			}
 		}
 
-        .button {
-			padding-left: $button-w-form--padding-h;
-			padding-right: $button-w-form--padding-h;
-            flex-shrink: 0;
+		.button {
+			padding-left: c.$button--padding-h;
+			padding-right: c.$button--padding-h;
+			flex-shrink: 0;
 
-			@if ( $button-form--group-padding == null ) {
+			@if (c.$button-group-padding == null) {
 				border-top-left-radius: 0;
 				border-bottom-left-radius: 0;
 			}
 		}
 
 		.button-sm {
-			padding-left: $button-sm-w-form--padding-h;
-			padding-right: $button-sm-w-form--padding-h;
+			padding-left: c.$button-sm--padding-h;
+			padding-right: c.$button-sm--padding-h;
 		}
-    }
+	}
+}
+
+// Adjust margins for spacing below labels and above help text
+.form-label + .form-input,
+.form-label + .form-select,
+.form-label + .form-checkbox,
+.form-label + .form-radio,
+.form-label + .form-switch {
+	margin-top: math.div(c.$spacing-unit, 4);
+}
+
+// Custom checkbox/radio appearance
+.form-check-input {
+	position: absolute;
 }

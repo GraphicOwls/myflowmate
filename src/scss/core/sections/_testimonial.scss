@@ -1,55 +1,58 @@
-.testimonial {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+@use "sass:math";
 
+// Define local defaults for tiles variables
+$testimonial-item-width: 33.333% !default; // Default to 3-up tiles
+
+.testimonial {
 	.section-inner {
-		padding-top: $testimonial--padding-t__mobile;
-		padding-bottom: $testimonial--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.section-header {
-		padding-bottom: $testimonial-header--padding__mobile;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.tiles-wrap {
-		@if ( $testimonial-items--padding__mobile != null ) {
-			margin-right: -($testimonial-items--padding__mobile / 2);
-			margin-left: -($testimonial-items--padding__mobile / 2);
-			margin-top: -($testimonial-items--padding__mobile / 2);
+		margin-right: -(math.div(c.$spacing--shared-h, 2));
+		margin-left: -(math.div(c.$spacing--shared-h, 2));
+		margin-top: -(math.div(c.$spacing--shared-h, 2));
 
-			&:last-of-type {
-				margin-bottom: -($testimonial-items--padding__mobile / 2);
-			}
+		&:last-of-type {
+			margin-bottom: -(math.div(c.$spacing--shared-h, 2));
+		}
 
-			&:not(:last-of-type) {
-				margin-bottom: ($testimonial-items--padding__mobile / 2);
-			}
+		&:not(:last-of-type) {
+			margin-bottom: math.div(c.$spacing--shared-h, 2);
 		}
 
 		&.push-left {
-
 			&::after {
-				flex-basis: $testimonial-item--width;
-				max-width: $testimonial-item--width;
-				@if ( $testimonial-items--padding__mobile != null ) {
-					padding-left: $testimonial-items--padding__mobile / 2;
-					padding-right: $testimonial-items--padding__mobile / 2;
-				}
+				content: "";
+				flex-basis: $testimonial-item-width;
+				max-width: $testimonial-item-width;
+				box-sizing: content-box;
+				padding-left: math.div(c.$spacing--shared-h, 2);
+				padding-right: math.div(c.$spacing--shared-h, 2);
+				height: 0;
 			}
 		}
 	}
 
 	.tiles-item {
-		flex-basis: $testimonial-item--width;
-		max-width: $testimonial-item--width;
-		@if ( $testimonial-items--padding__mobile != null ) {
-			padding: $testimonial-items--padding__mobile / 2;
-		}
+		flex-basis: $testimonial-item-width;
+		max-width: $testimonial-item-width;
+		box-sizing: content-box;
+		padding: math.div(c.$spacing--shared-h, 2);
 	}
 
 	.tiles-item-inner {
-		padding-top: $testimonial-item--inner-padding-v;
-		padding-bottom: $testimonial-item--inner-padding-v;
-		padding-left: $testimonial-item--inner-padding-h;
-		padding-right: $testimonial-item--inner-padding-h;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
+		padding-left: c.$spacing--shared-h;
+		padding-right: c.$spacing--shared-h;
 	}
 }
 
@@ -63,46 +66,40 @@
 	align-items: center;
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.testimonial {
-
 		.section-inner {
-			padding-top: $testimonial--padding-t__desktop;
-			padding-bottom: $testimonial--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.section-header {
-			padding-bottom: $testimonial-header--padding__desktop;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
-		@if ( $testimonial-items--padding__desktop != null ) {
+		.tiles-wrap {
+			margin-right: -(math.div(c.$spacing--shared-h, 2));
+			margin-left: -(math.div(c.$spacing--shared-h, 2));
+			margin-top: -(math.div(c.$spacing--shared-h, 2));
 
-			.tiles-wrap {
-				margin-right: -($testimonial-items--padding__desktop / 2);
-				margin-left: -($testimonial-items--padding__desktop / 2);
-				margin-top: -($testimonial-items--padding__desktop / 2);
-
-				&:last-of-type {
-					margin-bottom: -($testimonial-items--padding__desktop / 2);
-				}
-
-				&:not(:last-of-type) {
-					margin-bottom: ($testimonial-items--padding__desktop / 2);
-				}
-
-				&.push-left {
-
-					&::after {
-						padding-left: $testimonial-items--padding__desktop / 2;
-						padding-right: $testimonial-items--padding__desktop / 2;
-					}
-				}
+			&:last-of-type {
+				margin-bottom: -(math.div(c.$spacing--shared-h, 2));
 			}
 
-			.tiles-item {
-				padding: $testimonial-items--padding__desktop / 2;
+			&:not(:last-of-type) {
+				margin-bottom: math.div(c.$spacing--shared-h, 2);
 			}
+
+			&.push-left {
+				&::after {
+					padding-left: math.div(c.$spacing--shared-h, 2);
+					padding-right: math.div(c.$spacing--shared-h, 2);
+				}
+			}
+		}
+
+		.tiles-item {
+			padding: math.div(c.$spacing--shared-h, 2);
 		}
 	}
 }

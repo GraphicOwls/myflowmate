@@ -1,98 +1,95 @@
-.team {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+@use "sass:math";
 
+// Define local defaults for tiles variables
+$team-item-width: 33.333% !default; // Default to 3-up tiles
+
+.team {
 	.section-inner {
-		padding-top: $team--padding-t__mobile;
-		padding-bottom: $team--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.section-header {
-		padding-bottom: $team-header--padding__mobile;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.tiles-wrap {
-		@if ( $team-items--padding__mobile != null ) {
-			margin-right: -($team-items--padding__mobile / 2);
-			margin-left: -($team-items--padding__mobile / 2);
-			margin-top: -($team-items--padding__mobile / 2);
+		margin-right: -(math.div(c.$spacing--shared-h, 2));
+		margin-left: -(math.div(c.$spacing--shared-h, 2));
+		margin-top: -(math.div(c.$spacing--shared-h, 2));
 
-			&:last-of-type {
-				margin-bottom: -($team-items--padding__mobile / 2);
-			}
+		&:last-of-type {
+			margin-bottom: -(math.div(c.$spacing--shared-h, 2));
+		}
 
-			&:not(:last-of-type) {
-				margin-bottom: ($team-items--padding__mobile / 2);
-			}
+		&:not(:last-of-type) {
+			margin-bottom: math.div(c.$spacing--shared-h, 2);
 		}
 
 		&.push-left {
-
 			&::after {
-				flex-basis: $team-item--width;
-				max-width: $team-item--width;
-				@if ( $team-items--padding__mobile != null ) {
-					padding-left: $team-items--padding__mobile / 2;
-					padding-right: $team-items--padding__mobile / 2;
-				}
+				content: "";
+				flex-basis: $team-item-width;
+				max-width: $team-item-width;
+				box-sizing: content-box;
+				padding-left: math.div(c.$spacing--shared-h, 2);
+				padding-right: math.div(c.$spacing--shared-h, 2);
+				height: 0;
 			}
 		}
 	}
 
 	.tiles-item {
-		flex-basis: $team-item--width;
-		max-width: $team-item--width;
-		@if ( $team-items--padding__mobile != null ) {
-			padding: $team-items--padding__mobile / 2;
-		}
+		flex-basis: $team-item-width;
+		max-width: $team-item-width;
+		box-sizing: content-box;
+		padding: math.div(c.$spacing--shared-h, 2);
 	}
 
 	.tiles-item-inner {
-		padding-top: $team-item--inner-padding-v;
-		padding-bottom: $team-item--inner-padding-v;
-		padding-left: $team-item--inner-padding-h;
-		padding-right: $team-item--inner-padding-h;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
+		padding-left: c.$spacing--shared-h;
+		padding-right: c.$spacing--shared-h;
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.team {
-
 		.section-inner {
-			padding-top: $team--padding-t__desktop;
-			padding-bottom: $team--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.section-header {
-			padding-bottom: $team-header--padding__desktop;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
-		@if ( $team-items--padding__desktop != null ) {
+		.tiles-wrap {
+			margin-right: -(math.div(c.$spacing--shared-h, 2));
+			margin-left: -(math.div(c.$spacing--shared-h, 2));
+			margin-top: -(math.div(c.$spacing--shared-h, 2));
 
-			.tiles-wrap {
-				margin-right: -($team-items--padding__desktop / 2);
-				margin-left: -($team-items--padding__desktop / 2);
-				margin-top: -($team-items--padding__desktop / 2);
-
-				&:last-of-type {
-					margin-bottom: -($team-items--padding__desktop / 2);
-				}
-
-				&:not(:last-of-type) {
-					margin-bottom: ($team-items--padding__desktop / 2);
-				}
-
-				&.push-left {
-
-					&::after {
-						padding-left: $team-items--padding__desktop / 2;
-						padding-right: $team-items--padding__desktop / 2;
-					}
-				}
+			&:last-of-type {
+				margin-bottom: -(math.div(c.$spacing--shared-h, 2));
 			}
 
-			.tiles-item {
-				padding: $team-items--padding__desktop / 2;
+			&:not(:last-of-type) {
+				margin-bottom: math.div(c.$spacing--shared-h, 2);
 			}
+
+			&.push-left {
+				&::after {
+					padding-left: math.div(c.$spacing--shared-h, 2);
+					padding-right: math.div(c.$spacing--shared-h, 2);
+				}
+			}
+		}
+
+		.tiles-item {
+			padding: math.div(c.$spacing--shared-h, 2);
 		}
 	}
 }

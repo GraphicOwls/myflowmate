@@ -1,9 +1,28 @@
+@use "sass:map";
+@use "sass:math";
+@use "../../colors" as c;
+@use "../../mixins" as mx;
+
+// Define local defaults for modal variables
+$modal-outer-padding-v-mobile: c.$spacing-unit * 2 !default;
+$modal-min-width: 300px !default;
+$modal-max-width: 600px !default;
+$modal-inner-padding-v-mobile: c.$spacing-unit * 1.5 !default;
+$modal-inner-padding-h-mobile: c.$spacing-unit * 1.5 !default;
+$modal-close-position: c.$spacing-unit !default;
+$modal-close-icon-size: c.$spacing-unit !default;
+$modal-close-icon-thickness: c.$button-form--border-width !default;
+$modal-close-icon-radius: math.div(c.$button-form--border-width, 2) !default;
+$modal-outer-padding-v-desktop: c.$spacing-unit * 3 !default;
+$modal-inner-padding-v-desktop: c.$spacing-unit * 2 !default;
+$modal-inner-padding-h-desktop: c.$spacing-unit * 2 !default;
+
 .modal,
 .modal::before {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	top: 0
+	top: 0;
 }
 
 .modal {
@@ -16,22 +35,21 @@
 	z-index: 40;
 
 	&.modal-video {
-
 		.modal-inner {
 			padding: 0;
-			max-width: $modal-video--max-width;
+			max-width: c.$container--width-sm;
 		}
 	}
 
 	&::before,
-	.modal-inner  {
+	.modal-inner {
 		display: none;
 	}
 
 	&::before {
-		content: '';
+		content: "";
 		position: absolute;
-		background-color: color-bg(modal-outer);
+		background-color: map.get(c.$colors, bg, modal-outer);
 	}
 
 	&.is-active {
@@ -43,29 +61,29 @@
 		}
 
 		.modal-inner {
-			animation: slideUpInModal .15s ease-in-out both;
+			animation: slideUpInModal 0.15s ease-in-out both;
 		}
 
 		&::before {
-			animation: slideUpInModalBg .15s ease-in-out both;
+			animation: slideUpInModalBg 0.15s ease-in-out both;
 		}
 	}
 }
 
 .modal-inner {
-	max-height: calc(100vh - #{$modal--outer-padding-v__mobile} * 2);
+	max-height: calc(100vh - #{$modal-outer-padding-v-mobile} * 2);
 	overflow: auto;
 	position: relative;
-	width: calc(100%  - ( #{$container--padding__mobile} * 2 ));
-	min-width: $modal--min-width;
-	max-width: $modal--max-width;
-	margin-left: $container--padding__mobile;
-	margin-right: $container--padding__mobile;
-	background: color-bg(modal);
+	width: calc(100% - (#{c.$container--padding__mobile} * 2));
+	min-width: $modal-min-width;
+	max-width: $modal-max-width;
+	margin-left: c.$container--padding__mobile;
+	margin-right: c.$container--padding__mobile;
+	background: map.get(c.$colors, bg, modal);
 }
 
 .modal-content {
-	padding: $modal--inner-padding-v__mobile $modal--inner-padding-h__mobile;
+	padding: $modal-inner-padding-v-mobile $modal-inner-padding-h-mobile;
 }
 
 .modal-close {
@@ -77,22 +95,22 @@
 	position: absolute;
 	right: $modal-close-position;
 	top: $modal-close-position;
-	width: $modal-close-icon--size;
-	height: $modal-close-icon--size;
+	width: $modal-close-icon-size;
+	height: $modal-close-icon-size;
 
 	&::before,
 	&::after {
-		content: '';
+		content: "";
 		display: block;
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		margin-top: -($modal-close-icon--thickness / 2);
-		margin-left: -($modal-close-icon--size / 2);
-		width: $modal-close-icon--size;
-		height: $modal-close-icon--thickness;
-		background: color-icon(modal);
-		border-radius: $modal-close-icon--radius;
+		margin-top: -(math.div($modal-close-icon-thickness, 2));
+		margin-left: -(math.div($modal-close-icon-size, 2));
+		width: $modal-close-icon-size;
+		height: $modal-close-icon-thickness;
+		background: map.get(c.$colors, icon, modal);
+		border-radius: $modal-close-icon-radius;
 	}
 
 	&::before {
@@ -104,47 +122,45 @@
 	}
 
 	&:hover {
-
 		&::before,
 		&::after {
-			background: color-icon(modal-hover);
+			background: map.get(c.$colors, icon, modal-hover);
 		}
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.modal-inner {
 		margin: 0 auto;
-		max-height: calc(100vh - #{$modal--outer-padding-v__desktop} * 2);
+		max-height: calc(100vh - #{$modal-outer-padding-v-desktop} * 2);
 	}
 
 	.modal-content {
-		padding-top: $modal--inner-padding-v__desktop;
-		padding-bottom: $modal--inner-padding-v__desktop;
-		padding-left: $modal--inner-padding-h__desktop;
-		padding-right: $modal--inner-padding-h__desktop;
+		padding-top: $modal-inner-padding-v-desktop;
+		padding-bottom: $modal-inner-padding-v-desktop;
+		padding-left: $modal-inner-padding-h-desktop;
+		padding-right: $modal-inner-padding-h-desktop;
 	}
 }
 
 @keyframes slideUpInModal {
-    0% {
-        opacity: 0;
-        transform: translateY(-24px);
-    }
+	0% {
+		opacity: 0;
+		transform: translateY(-24px);
+	}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes slideUpInModalBg {
-    0% {
-        opacity: 0;
-    }
+	0% {
+		opacity: 0;
+	}
 
-    to {
-        opacity: 1;
-    }
+	to {
+		opacity: 1;
+	}
 }

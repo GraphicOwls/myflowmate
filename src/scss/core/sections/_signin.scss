@@ -1,49 +1,50 @@
-.signin {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
+// Define local defaults for signin variables
+$signin-item-width: 100% !default;
+
+.signin {
 	.section-inner {
-		padding-top: $signin--padding-t__mobile;
-		padding-bottom: $signin--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.section-header {
-		padding-bottom: $signin-header--padding__mobile;
+		padding-bottom: c.$spacing--shared-v;
 	}
 
 	.tiles-wrap {
-
 		&.push-left {
-
 			&::after {
-				flex-basis: $signin-item--width;
-				max-width: $signin-item--width;
+				flex-basis: $signin-item-width;
+				max-width: $signin-item-width;
 			}
 		}
 	}
 
 	.tiles-item {
-		flex-basis: $signin-item--width;
-		max-width: $signin-item--width;
+		flex-basis: $signin-item-width;
+		max-width: $signin-item-width;
 	}
 
 	.tiles-item-inner {
-		padding-top: $signin-item--inner-padding-v;
-		padding-bottom: $signin-item--inner-padding-v;
-		padding-left: $signin-item--inner-padding-h;
-		padding-right: $signin-item--inner-padding-h;
+		padding-top: 0;
+		padding-bottom: 0;
+		padding-left: 0;
+		padding-right: 0;
 	}
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.signin {
-
 		.section-inner {
-			padding-top: $signin--padding-t__desktop;
-			padding-bottom: $signin--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 
 		.section-header {
-			padding-bottom: $signin-header--padding__desktop;
+			padding-bottom: c.$spacing--shared-v;
 		}
 	}
 }

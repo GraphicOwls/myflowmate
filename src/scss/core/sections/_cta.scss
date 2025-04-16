@@ -1,22 +1,22 @@
-.cta {
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
+.cta {
 	.section-inner {
-		padding-top: $cta--padding-t__mobile;
-		padding-bottom: $cta--padding-b__mobile;
+		padding-top: c.$spacing--shared-v;
+		padding-bottom: c.$spacing--shared-v;
 	}
 }
 
 .cta-slogan {
-	margin-bottom: $cta-slogan--padding-v__mobile;
+	margin-bottom: c.$spacing--shared-v;
 }
 
-@include media( '>medium' ) {
-
+@include mx.media(">medium") {
 	.cta {
-
 		.section-inner {
-			padding-top: $cta--padding-t__desktop;
-			padding-bottom: $cta--padding-b__desktop;
+			padding-top: c.$spacing--shared-v;
+			padding-bottom: c.$spacing--shared-v;
 		}
 	}
 
@@ -27,11 +27,11 @@
 	}
 
 	.cta-slogan {
-		margin-bottom: $cta-slogan--padding-v__desktop;
+		margin-bottom: 0;
 
 		.cta-split & {
 			margin-bottom: 0;
-			margin-right: $cta-slogan--padding-h__desktop;
+			margin-right: c.$spacing--shared-h;
 		}
 	}
 }

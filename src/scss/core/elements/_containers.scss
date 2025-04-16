@@ -1,3 +1,6 @@
+@use "../../variables" as *;
+@use "../../mixins" as mx;
+
 .container,
 .container-sm,
 .container-xs {
@@ -6,34 +9,33 @@
 	padding-left: $container--padding__mobile;
 	padding-right: $container--padding__mobile;
 
-	@include media( '>small' ) {
+	@include mx.media(">small") {
 		padding-left: $container--padding__desktop;
 		padding-right: $container--padding__desktop;
 	}
 }
 
 .container {
-	max-width: $container--width + ( $container--padding__desktop * 2 );
+	max-width: calc($container--width + ($container--padding__desktop * 2));
 }
 
 .container-sm {
-	max-width: $container--width-sm + ( $container--padding__desktop * 2 );
+	max-width: calc($container--width-sm + ($container--padding__desktop * 2));
 }
 
 .container-xs {
-	max-width: $container--width-xs + ( $container--padding__desktop * 2 );
+	max-width: calc($container--width-xs + ($container--padding__desktop * 2));
 }
 
-[class*=container] {
-
-	[class*=container] {
+[class*="container"] {
+	[class*="container"] {
 		padding-left: 0;
 		padding-right: 0;
 	}
 
-    .container-sm {
+	.container-sm {
 		max-width: $container--width-sm;
-    }
+	}
 
 	.container-xs {
 		max-width: $container--width-xs;
