@@ -1,4 +1,7 @@
-@if ( $font--provider == 'Google Fonts' ) {
-    @import url('https://fonts.googleapis.com/css?family=#{$font--import}&display=swap');
+@use '../../variables' as *;
+@use '../../functions' as fn;
+@use '../../colors' as c;
 
+@if ($font-provider == 'Google Fonts') {
+    @import url('https://fonts.googleapis.com/css?family=#{$font-import}&display=swap');
 }

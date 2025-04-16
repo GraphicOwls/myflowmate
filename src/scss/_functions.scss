@@ -1,0 +1,86 @@
+@use 'variables' as *;
+
+// Get color from palette
+@function get-color($elem, $variant) {
+	@return map-get(map-get($palette-colors, $elem), $variant);
+}
+
+// Get font family
+@function get-font-family($elem) {
+	@return map-get($font-family, $elem);
+}
+
+// Get font size
+@function get-font-size($elem) {
+	@if map-get($font-size, $elem) {
+		@return nth(map-get($font-scale, map-get($font-size, $elem)), 1);
+	}
+	@return null;
+}
+
+// Get line height
+@function get-line-height($elem) {
+	@if map-get($font-size, $elem) {
+		@return nth(map-get($font-scale, map-get($font-size, $elem)), 2);
+	}
+	@return null;
+}
+
+// Get kerning
+@function get-kerning($elem) {
+	@if map-get($font-size, $elem) {
+		@return nth(map-get($font-scale, map-get($font-size, $elem)), 3);
+	}
+	@return null;
+}
+
+// Get font weight
+@function get-font-weight($elem) {
+	@return map-get($font-weight, $elem);
+}
+
+// SVG URL encoding
+@function str-replace($string, $search, $replace: '') {
+	$index: str-index($string, $search);
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+	@return $string;
+}
+
+@function url-encode($string) {
+	$map: (
+		"%": "%25",
+		"<": "%3C",
+		">": "%3E",
+		" ": "%20",
+		"!": "%21",
+		"*": "%2A",
+		"'": "%27",
+		'"': "%22",
+		"(": "%28",
+		")": "%29",
+		";": "%3B",
+		":": "%3A",
+		"@": "%40",
+		"&": "%26",
+		"=": "%3D",
+		"+": "%2B",
+		"$": "%24",
+		",": "%2C",
+		"/": "%2F",
+		"?": "%3F",
+		"#": "%23",
+		"[": "%5B",
+		"]": "%5D"
+	);
+	$new: $string;
+	@each $search, $replace in $map {
+		$new: str-replace($new, $search, $replace);
+	}
+	@return $new;
+}
+
+@function inline-svg($string) {
+	@return url('data:image/svg+xml;charset=US-ASCII,#{url-encode($string)}');
+}

@@ -1,0 +1,92 @@
+// Core color palette (raw values)
+$palette-colors: (
+	light: (
+		1: #FFFFFF,
+		2: #F1F2F8,
+		3: #CFD3E2
+	),
+	dark: (
+		1: #1E2238,
+		2: #525A75,
+		3: #8F96B0
+	),
+	primary: (
+		1: #3F52FF,
+		2: #7280FF,
+		3: #0B24FF,
+		4: #D8DCFF
+ 	),
+	secondary: (
+		1: #02C6F1,
+		2: #4FD7F5,
+		3: #029DBF,
+		4: #B1EFFE
+	),
+	alert: (
+		error: #FF5F8E,
+		warning: #EBAE55,
+		success: #30CD90
+	)
+);
+
+// Font configuration
+$font-provider: 'Google Fonts';
+$font-import: 'Inter:900,700,600,400|Roboto:400,500,700';
+
+$font-family: (
+	heading: '"Inter", sans-serif',
+	base: '"Inter", sans-serif',
+	code: 'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
+	pre: '"Courier 10 Pitch", Courier, monospace'
+);
+
+// The typographic scale
+$font-scale: (
+	alpha:   ( 50px, 60px, -0.1px ),
+	beta:    ( 38px, 48px, -0.1px ),
+	gamma:   ( 32px, 40px, -0.1px ),
+	delta:   ( 24px, 32px, -0.1px ),
+	epsilon: ( 20px, 30px, -0.1px ),
+	zeta:    ( 18px, 28px, -0.1px ),
+	eta:     ( 16px, 24px, -0.1px ),
+	theta:   ( 14px, 22px, null )
+);
+
+// Font sizes configuration
+$font-size: (
+	h1: 'beta',
+	h2: 'gamma',
+	h3: 'delta',
+	h4: 'delta',
+	base: 'epsilon',
+	sm: 'zeta',
+	xs: 'eta',
+	xxs: 'theta',
+	bquote: 'epsilon',
+	figcap: 'theta',
+	code: 'eta',
+	pre: 'eta',
+	table: 'eta',
+	h1-desktop: 'alpha',
+	h2-desktop: 'beta',
+	h3-desktop: 'gamma',
+	h4-desktop: null,
+	base-desktop: null,
+	sm-desktop: null,
+	xs-desktop: null,
+	xxs-desktop: null,
+	bquote-desktop: null,
+	figcap-desktop: null,
+	code-desktop: null,
+	pre-desktop: null,
+	table-desktop: null
+);
+
+// Font weights
+$font-weight: (
+	heading: 600,
+	base: 400,
+	strong: 600,
+	bquote: 700,
+	figcap: null
+);

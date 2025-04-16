@@ -1,15 +1,19 @@
+@use '../../variables' as *;
+@use '../../functions' as fn;
+@use '../../colors' as c;
+
 html {
 	box-sizing: border-box;
 }
 
 *,
 *:before,
-*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+*:after {
 	box-sizing: inherit;
 }
 
 body {
-	background: color-bg(body); /* Fallback for when there is no custom background color defined. */
+	background: map-get(c.$bg-color, body);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
