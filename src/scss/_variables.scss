@@ -1,75 +1,107 @@
 // Core color palette (raw values)
 $palette-colors: (
 	light: (
-		1: #FFFFFF,
-		2: #F1F2F8,
-		3: #CFD3E2
+		1: #ffffff,
+		2: #f1f2f8,
+		3: #cfd3e2,
 	),
 	dark: (
-		1: #1E2238,
-		2: #525A75,
-		3: #8F96B0
+		1: #1e2238,
+		2: #525a75,
+		3: #8f96b0,
 	),
 	primary: (
-		1: #3F52FF,
-		2: #7280FF,
-		3: #0B24FF,
-		4: #D8DCFF
- 	),
+		1: #3f52ff,
+		2: #7280ff,
+		3: #0b24ff,
+		4: #d8dcff,
+	),
 	secondary: (
-		1: #02C6F1,
-		2: #4FD7F5,
-		3: #029DBF,
-		4: #B1EFFE
+		1: #02c6f1,
+		2: #4fd7f5,
+		3: #029dbf,
+		4: #b1effe,
 	),
 	alert: (
-		error: #FF5F8E,
-		warning: #EBAE55,
-		success: #30CD90
-	)
+		error: #ff5f8e,
+		warning: #ebae55,
+		success: #30cd90,
+	),
 );
 
 // Font configuration
-$font-provider: 'Google Fonts';
-$font-import: 'Inter:900,700,600,400|Roboto:400,500,700';
+$font-provider: "Google Fonts";
+$font-import: "Inter:900,700,600,400|Roboto:400,500,700";
 
 $font-family: (
 	heading: '"Inter", sans-serif',
 	base: '"Inter", sans-serif',
 	code: 'Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace',
-	pre: '"Courier 10 Pitch", Courier, monospace'
+	pre: '"Courier 10 Pitch", Courier, monospace',
 );
 
 // The typographic scale
 $font-scale: (
-	alpha:   ( 50px, 60px, -0.1px ),
-	beta:    ( 38px, 48px, -0.1px ),
-	gamma:   ( 32px, 40px, -0.1px ),
-	delta:   ( 24px, 32px, -0.1px ),
-	epsilon: ( 20px, 30px, -0.1px ),
-	zeta:    ( 18px, 28px, -0.1px ),
-	eta:     ( 16px, 24px, -0.1px ),
-	theta:   ( 14px, 22px, null )
+	alpha: (
+		50px,
+		60px,
+		-0.1px,
+	),
+	beta: (
+		38px,
+		48px,
+		-0.1px,
+	),
+	gamma: (
+		32px,
+		40px,
+		-0.1px,
+	),
+	delta: (
+		24px,
+		32px,
+		-0.1px,
+	),
+	epsilon: (
+		20px,
+		30px,
+		-0.1px,
+	),
+	zeta: (
+		18px,
+		28px,
+		-0.1px,
+	),
+	eta: (
+		16px,
+		24px,
+		-0.1px,
+	),
+	theta: (
+		14px,
+		22px,
+		null,
+	),
 );
 
 // Font sizes configuration
 $font-size: (
-	h1: 'beta',
-	h2: 'gamma',
-	h3: 'delta',
-	h4: 'delta',
-	base: 'epsilon',
-	sm: 'zeta',
-	xs: 'eta',
-	xxs: 'theta',
-	bquote: 'epsilon',
-	figcap: 'theta',
-	code: 'eta',
-	pre: 'eta',
-	table: 'eta',
-	h1-desktop: 'alpha',
-	h2-desktop: 'beta',
-	h3-desktop: 'gamma',
+	h1: "beta",
+	h2: "gamma",
+	h3: "delta",
+	h4: "delta",
+	base: "epsilon",
+	sm: "zeta",
+	xs: "eta",
+	xxs: "theta",
+	bquote: "epsilon",
+	figcap: "theta",
+	code: "eta",
+	pre: "eta",
+	table: "eta",
+	h1-desktop: "alpha",
+	h2-desktop: "beta",
+	h3-desktop: "gamma",
 	h4-desktop: null,
 	base-desktop: null,
 	sm-desktop: null,
@@ -79,7 +111,7 @@ $font-size: (
 	figcap-desktop: null,
 	code-desktop: null,
 	pre-desktop: null,
-	table-desktop: null
+	table-desktop: null,
 );
 
 // Font weights
@@ -88,7 +120,7 @@ $font-weight: (
 	base: 400,
 	strong: 600,
 	bquote: 700,
-	figcap: null
+	figcap: null,
 );
 
 // Breakpoints
@@ -96,5 +128,17 @@ $breakpoints: (
 	small: 480px,
 	medium: 768px,
 	large: 992px,
-	xlarge: 1200px
+	xlarge: 1200px,
 );
+
+// Scroll reveal animation amounts
+$scroll-reveal--transition-duration: 0.6s !default;
+$scroll-reveal--transition-timing: ease-in-out !default;
+$scroll-reveal--from-top-amount: -30px !default;
+$scroll-reveal--from-bottom-amount: 30px !default;
+$scroll-reveal--from-left-amount: -30px !default;
+$scroll-reveal--from-right-amount: 30px !default;
+$scroll-reveal--scale-up-amount: 1.05 !default;
+$scroll-reveal--scale-down-amount: 0.95 !default;
+$scroll-reveal--rotate-from-left-amount: -15deg !default;
+$scroll-reveal--rotate-from-right-amount: 15deg !default;

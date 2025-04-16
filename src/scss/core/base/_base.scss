@@ -1,6 +1,8 @@
-@use '../../variables' as *;
-@use '../../functions' as fn;
-@use '../../colors' as c;
+@use "sass:map";
+@use "../../variables" as *;
+@use "../../functions" as fn;
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
 html {
 	box-sizing: border-box;
@@ -13,7 +15,7 @@ html {
 }
 
 body {
-	background: map-get(c.$bg-color, body);
+	background: map.get($colors, bg, body);
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 }
@@ -25,7 +27,8 @@ hr {
 	margin-bottom: $spacing--shared-v;
 }
 
-ul, ol {
+ul,
+ol {
 	margin-top: 0;
 	padding-left: $spacing--shared-h;
 
@@ -43,7 +46,6 @@ ol {
 }
 
 li {
-
 	&:not(:last-child) {
 		margin-bottom: $spacing--shared-v / 2;
 	}
@@ -119,8 +121,7 @@ td {
 	}
 }
 
-.invert-color  {
-
+.invert-color {
 	hr {
 		@include divider(false, inverse);
 	}

@@ -1,63 +1,77 @@
-@use '../../variables' as *;
-@use '../../functions' as fn;
-@use '../../colors' as c;
-@use '../../mixins' as mx;
+@use "sass:map";
+@use "../../variables" as *;
+@use "../../functions" as fn;
+@use "../../colors" as c;
+@use "../../mixins" as mx;
 
-h1, .h1,
-h2, .h2,
-h3, .h3,
-h4, .h4,
-h5, .h5,
-h6, .h6 {
-    @include mx.font-family(heading);
-    @include mx.font-weight(heading);
-    color: map-get(c.$color, heading);
-    clear: both;
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@include mx.font-family(heading);
+	@include mx.font-weight(heading);
+	color: map-get(c.$color, heading);
+	clear: both;
 }
 
-h1, .h1 {
-    @include mx.font-size(h1);
+h1,
+.h1 {
+	@include mx.font-size(h1);
 }
 
-h2, .h2 {
-    @include mx.font-size(h2);
+h2,
+.h2 {
+	@include mx.font-size(h2);
 }
 
-h3, .h3 {
-    @include mx.font-size(h3);
+h3,
+.h3 {
+	@include mx.font-size(h3);
 }
 
-h4, .h4 {
-    @include mx.font-size(h4);
+h4,
+.h4 {
+	@include mx.font-size(h4);
 }
 
 p {
-    margin-top: 0;
-    margin-bottom: 1.5em;
+	margin-top: 0;
+	margin-bottom: 1.5em;
 }
 
-dfn, cite, em, i {
-    font-style: italic;
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
 }
 
 blockquote {
-    @include mx.font-size(bquote);
-    @include mx.font-weight(bquote);
-    margin: 1.5em 0;
-    padding: 0 1em;
-    border-left: 3px solid map-get(c.$border-color, divider);
+	@include mx.font-size(bquote);
+	@include mx.font-weight(bquote);
+	margin: 1.5em 0;
+	padding: 0 1em;
+	border-left: 3px solid map-get(c.$border-color, divider);
 
-    &:first-child {
-        margin-top: 0;
-    }
+	&:first-child {
+		margin-top: 0;
+	}
 
-    &:last-child {
-        margin-bottom: 0;
-    }
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 address {
-    margin: 0 0 1.5em;
+	margin: 0 0 1.5em;
 }
 
 pre,
@@ -65,26 +79,28 @@ code,
 kbd,
 tt,
 var {
-    @include mx.font-family(code);
-    @include mx.font-size(code);
-    padding: 0.2em 0.4em;
-    margin: 0;
-    background: map-get(c.$bg-color, code);
-    border-radius: 3px;
+	@include mx.font-family(code);
+	@include mx.font-size(code);
+	padding: 0.2em 0.4em;
+	margin: 0;
+	background: map.get(c.$bg-color, code);
+	border-radius: 3px;
 }
 
 pre {
-    @include mx.font-size(pre);
-    max-width: 100%;
-    overflow: auto;
-    padding: 1em;
-    margin-bottom: 1.5em;
+	@include mx.font-size(pre);
+	max-width: 100%;
+	overflow: auto;
+	padding: 1em;
+	margin-bottom: 1.5em;
 }
 
-abbr, acronym {
-    cursor: help;
+abbr,
+acronym {
+	cursor: help;
 }
 
-mark, ins {
-    text-decoration: none;
+mark,
+ins {
+	text-decoration: none;
 }

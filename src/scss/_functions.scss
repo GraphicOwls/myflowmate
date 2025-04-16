@@ -1,52 +1,54 @@
+@use "sass:map";
+@use "sass:string";
 @forward "variables";
 @use "variables" as *;
 
 // Get color from palette
 @function get-color($elem, $variant) {
-	@return map-get(map-get($palette-colors, $elem), $variant);
+	@return map.get(map.get($palette-colors, $elem), $variant);
 }
 
 // Get font family
 @function get-font-family($elem) {
-	@return map-get($font-family, $elem);
+	@return map.get($font-family, $elem);
 }
 
 // Get font size
 @function get-font-size($elem) {
-	@if map-get($font-size, $elem) {
-		@return nth(map-get($font-scale, map-get($font-size, $elem)), 1);
+	@if map.get($font-size, $elem) {
+		@return nth(map.get($font-scale, map.get($font-size, $elem)), 1);
 	}
 	@return null;
 }
 
 // Get line height
 @function get-line-height($elem) {
-	@if map-get($font-size, $elem) {
-		@return nth(map-get($font-scale, map-get($font-size, $elem)), 2);
+	@if map.get($font-size, $elem) {
+		@return nth(map.get($font-scale, map.get($font-size, $elem)), 2);
 	}
 	@return null;
 }
 
 // Get kerning
 @function get-kerning($elem) {
-	@if map-get($font-size, $elem) {
-		@return nth(map-get($font-scale, map-get($font-size, $elem)), 3);
+	@if map.get($font-size, $elem) {
+		@return nth(map.get($font-scale, map.get($font-size, $elem)), 3);
 	}
 	@return null;
 }
 
 // Get font weight
 @function get-font-weight($elem) {
-	@return map-get($font-weight, $elem);
+	@return map.get($font-weight, $elem);
 }
 
 // SVG URL encoding
 @function str-replace($string, $search, $replace: "") {
-	$index: str-index($string, $search);
+	$index: string.index($string, $search);
 	@if $index {
-		@return str-slice($string, 1, $index - 1) + $replace +
+		@return string.slice($string, 1, $index - 1) + $replace +
 			str-replace(
-				str-slice($string, $index + str-length($search)),
+				string.slice($string, $index + string.length($search)),
 				$search,
 				$replace
 			);

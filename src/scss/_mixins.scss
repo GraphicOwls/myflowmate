@@ -1,3 +1,5 @@
+@use "sass:map";
+@use "sass:string";
 @forward "variables";
 @forward "functions";
 @use "variables" as *;
@@ -51,14 +53,14 @@
 
 // Media queries mixin (mobile-first)
 @mixin media($expression) {
-	@if (str-index($expression, ">")) {
-		$breakpoint: str-slice($expression, 2);
-		@media (min-width: map-get($breakpoints, $breakpoint)) {
+	@if (string.index($expression, ">")) {
+		$breakpoint: string.slice($expression, 2);
+		@media (min-width: map.get($breakpoints, $breakpoint)) {
 			@content;
 		}
-	} @else if (str-index($expression, "<")) {
-		$breakpoint: str-slice($expression, 2);
-		@media (max-width: map-get($breakpoints, $breakpoint)) {
+	} @else if (string.index($expression, "<")) {
+		$breakpoint: string.slice($expression, 2);
+		@media (max-width: map.get($breakpoints, $breakpoint)) {
 			@content;
 		}
 	} @else {
